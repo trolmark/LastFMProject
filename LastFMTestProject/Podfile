@@ -1,0 +1,19 @@
+platform :ios, '7.0'
+
+# Yep.
+inhibit_all_warnings!
+
+# Core
+pod 'AFNetworking'
+pod 'Mantle', '~> 1.5.1'
+pod 'ReactiveCocoa'
+
+# Language sugar
+pod 'libextobjc', '~> 0.4.1'
+
+# Stubs
+pod 'OHHTTPStubs'
+
+# Network
+pod 'Overcoat', '~>2.0'
+pod 'Overcoat/ReactiveCocoa', '~>2.0'
