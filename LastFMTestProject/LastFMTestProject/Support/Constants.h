@@ -5,6 +5,7 @@
 #define RemoteAlarm_Constants_h
 
 extern NSString * const kBaseAPIURL;
+extern NSString * const kLastFMAPIKey;
 
 
 

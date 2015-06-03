@@ -9,5 +9,8 @@
 #ifndef LastFMTestProject_ADModels_h
 #define LastFMTestProject_ADModels_h
 
+#import "ADArtist.h"
+#import "ADAlbum.h"
+#import "ADTrack.h"
 
 #endif

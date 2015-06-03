@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class ADAlbumViewModel;
 @interface ADAlbumViewController : UIViewController
+
+- (instancetype) initWithAlbumViewModel:(ADAlbumViewModel *) viewModel;
 
 @end

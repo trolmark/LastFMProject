@@ -8,7 +8,9 @@
 
 #import "ADAPIClient.h"
 #import "ADAPIClient+Stubs.h"
-#import "Constants.h"
+#import "Support.h"
+#import "ADModels.h"
+#import "ADNetworkConstants.h"
 
 
 @implementation ADAPIClient
@@ -40,14 +42,47 @@
 
 + (NSDictionary *)modelClassesByResourcePath {
     return @{
-            
-             };
+             ADArtistListPath   : [ADArtist class],
+             ADAlbumListPath    : [ADAlbum class],
+             ADAlbumInfoPath    : [ADAlbum class],
+            };
 }
 
 + (NSDictionary *)responseClassesByResourcePath {
     return @{
-             
+             ADArtistListPath   : [OVCResponse class],
+             ADAlbumListPath    : [OVCResponse class],
+             ADAlbumInfoPath    : [OVCResponse class],
              };
+}
+
+
+- (RACSignal *) fetchArtistListAtPage:(NSInteger) page byCountry:(NSString *) country
+{
+    if (!country) return [RACSignal empty];
+    
+    NSDictionary *params = @{@"method"  : ADArtistListPath,
+                             @"api_key" : kLastFMAPIKey,
+                             @"country" : country,
+                             @"format"  : @"json"};
+    
+    return [[self rac_GET:@"" parameters:params] map:^NSArray *(OVCResponse *response) {
+        return response.result;
+    }];
+}
+
+- (RACSignal *) fetchAlbumListAtPage:(NSInteger) page forArtist:(ADArtist *) artist
+{
+    return [[self rac_GET:@"" parameters:nil]  map:^NSArray *(OVCResponse *response) {
+        return response.result;
+    }];
+}
+
+- (RACSignal *) fetchInfoForAlbum:(ADAlbum *) album
+{
+    return [[self rac_GET:@"" parameters:nil]  map:^NSArray *(OVCResponse *response) {
+        return response.result;
+    }];
 }
 
 

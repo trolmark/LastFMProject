@@ -10,8 +10,13 @@
 #import <Overcoat/Overcoat.h>
 #import <Overcoat/ReactiveCocoa+Overcoat.h>
 
+@class ADAlbum, ADArtist;
 @interface ADAPIClient : OVCHTTPSessionManager
 
 + (instancetype) newAPIClient;
+
+- (RACSignal *) fetchArtistListAtPage:(NSInteger) page byCountry:(NSString *) country;
+- (RACSignal *) fetchAlbumListAtPage:(NSInteger) page forArtist:(ADArtist *) artist;
+- (RACSignal *) fetchInfoForAlbum:(ADAlbum *) album;
 
 @end

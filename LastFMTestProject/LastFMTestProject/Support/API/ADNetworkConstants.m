@@ -8,6 +8,6 @@
 
 #import "ADNetworkConstants.h"
 
-@implementation ADNetworkConstants
-
-@end
+NSString *const ADArtistListPath = @"geo.getTopArtists";
+NSString *const ADAlbumListPath = @"artist.getTopAlbums";
+NSString *const ADAlbumInfoPath = @"album.getInfo";

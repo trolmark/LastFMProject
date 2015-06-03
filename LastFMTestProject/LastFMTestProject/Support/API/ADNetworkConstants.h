@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 trolmark. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
 
-@interface ADNetworkConstants : NSObject
+extern NSString *const ADArtistListPath;
+extern NSString *const ADAlbumListPath;
+extern NSString *const ADAlbumInfoPath;
 
-@end

@@ -7,22 +7,36 @@
 //
 
 #import "ADAlbumViewController.h"
+#import "ADViewModels.h"
 
 @interface ADAlbumViewController ()
+
+@property (nonatomic, strong) ADAlbumViewModel *viewModel;
 
 @end
 
 @implementation ADAlbumViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+- (instancetype) initWithAlbumViewModel:(ADAlbumViewModel *) viewModel {
+    self = [super init];
+    if (!self) {
+        return nil;
+    }
+    
+    if ([viewModel isKindOfClass:[ADAlbumViewModel class]]) {
+        self.viewModel = viewModel;
+    }
+    
+    return self;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
 }
+
+
 
 
 @end

@@ -9,5 +9,8 @@
 #ifndef LastFMTestProject_ADViewModels_h
 #define LastFMTestProject_ADViewModels_h
 
+#import "ADArtistViewModel.h"
+#import "ADAlbumViewModel.h"
+#import "ADTrackViewModel.h"
 
 #endif

@@ -22,9 +22,12 @@
            configureCellBlock:(CellConfigureBlock)aConfigureCellBlock
 {
     self = [super init];
-    if (self) {
-
+    if (!self) {
+        return nil;
     }
+    
+    self.defaultCellIdentifier = aCellIdentifier;
+    self.configureCellBlock = [aConfigureCellBlock copy];
     return self;
 }
 
@@ -37,7 +40,6 @@
     return self.defaultCellIdentifier;
 }
 
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return [self countOfItems];
@@ -46,7 +48,8 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     id item = [self itemAtIndexPath:indexPath];
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[self cellIdentifierForIndexPath:indexPath] forIndexPath:indexPath];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:
+                                  [self cellIdentifierForIndexPath:indexPath] forIndexPath:indexPath];
     if (self.configureCellBlock) {
         self.configureCellBlock(cell, item);
     }
