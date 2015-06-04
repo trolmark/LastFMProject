@@ -17,9 +17,8 @@
                 cellIdentifier:(NSString *)aCellIdentifier
             configureCellBlock:(CellConfigureBlock)aConfigureCellBlock;
 
-#pragma mark customize collection view ,ethods
+#pragma mark customize collection view methods
 
-- (NSString *) cellIdentifierForIndexPath:(NSIndexPath *)path;
-- (void)registerReusableViewsWithCollectionView:(UICollectionView *)collectionView;
+- (void) registerReusableViewsWithCollectionView:(UICollectionView *)collectionView;
 
 @end

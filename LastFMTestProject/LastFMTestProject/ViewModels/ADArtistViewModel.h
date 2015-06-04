@@ -13,5 +13,7 @@
 @interface ADArtistViewModel : NSObject <ADViewModelProtocol>
 
 @property (nonatomic, strong, readonly) ADArtist *model;
+@property (nonatomic, strong, readonly) NSString *name;
+@property (nonatomic, assign, readonly) NSInteger playCount;
 
 @end

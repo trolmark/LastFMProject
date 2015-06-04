@@ -22,6 +22,9 @@
 		848533181B1E4CCA001E6DA3 /* ADNetworkConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533171B1E4CCA001E6DA3 /* ADNetworkConstants.m */; };
 		8485331D1B1E4E20001E6DA3 /* ADBaseDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485331C1B1E4E20001E6DA3 /* ADBaseDataSource.m */; };
 		848533201B1E4EAD001E6DA3 /* ADCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485331F1B1E4EAD001E6DA3 /* ADCollectionViewDataSource.m */; };
+		A7E604CC1B20A3DF000095AB /* ADArtistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604CB1B20A3DF000095AB /* ADArtistCell.m */; };
+		A7E604CF1B20A3F7000095AB /* ADAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604CE1B20A3F7000095AB /* ADAlbumCell.m */; };
+		A7E604D21B20A403000095AB /* ADTrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604D11B20A403000095AB /* ADTrackCell.m */; };
 		A7EAC4BF1B1EFD87004B8A1F /* ADArtist.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EAC4BE1B1EFD87004B8A1F /* ADArtist.m */; };
 		A7EAC4C21B1EFD92004B8A1F /* ADAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EAC4C11B1EFD92004B8A1F /* ADAlbum.m */; };
 		A7EAC4C51B1EFDC7004B8A1F /* ADTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = A7EAC4C41B1EFDC7004B8A1F /* ADTrack.m */; };
@@ -78,6 +81,12 @@
 		848533211B1E4F13001E6DA3 /* Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
 		93771067284C48A0C0179DE7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		988DA25D5CD9476392BE3886 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7E604CA1B20A3DF000095AB /* ADArtistCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADArtistCell.h; sourceTree = "<group>"; };
+		A7E604CB1B20A3DF000095AB /* ADArtistCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADArtistCell.m; sourceTree = "<group>"; };
+		A7E604CD1B20A3F7000095AB /* ADAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAlbumCell.h; sourceTree = "<group>"; };
+		A7E604CE1B20A3F7000095AB /* ADAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAlbumCell.m; sourceTree = "<group>"; };
+		A7E604D01B20A403000095AB /* ADTrackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTrackCell.h; sourceTree = "<group>"; };
+		A7E604D11B20A403000095AB /* ADTrackCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADTrackCell.m; sourceTree = "<group>"; };
 		A7EAC4BC1B1EF85F004B8A1F /* Support.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Support.h; sourceTree = "<group>"; };
 		A7EAC4BD1B1EFD87004B8A1F /* ADArtist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADArtist.h; sourceTree = "<group>"; };
 		A7EAC4BE1B1EFD87004B8A1F /* ADArtist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADArtist.m; sourceTree = "<group>"; };
@@ -156,6 +165,7 @@
 		848532D81B1E42F5001E6DA3 /* LastFMTestProject */ = {
 			isa = PBXGroup;
 			children = (
+				A7E604C91B20A0DA000095AB /* CollectionViewLayouts */,
 				A7EAC4DE1B1F2B75004B8A1F /* Transitions */,
 				A7EAC4CA1B1F085C004B8A1F /* Protocols */,
 				848533051B1E43D7001E6DA3 /* Support */,
@@ -295,6 +305,14 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		A7E604C91B20A0DA000095AB /* CollectionViewLayouts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CollectionViewLayouts;
+			path = UICollectionViewLayouts;
+			sourceTree = "<group>";
+		};
 		A7EAC4C61B1F0745004B8A1F /* NetworkModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +337,12 @@
 		A7EAC4D61B1F29E1004B8A1F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				A7E604CA1B20A3DF000095AB /* ADArtistCell.h */,
+				A7E604CB1B20A3DF000095AB /* ADArtistCell.m */,
+				A7E604CD1B20A3F7000095AB /* ADAlbumCell.h */,
+				A7E604CE1B20A3F7000095AB /* ADAlbumCell.m */,
+				A7E604D01B20A403000095AB /* ADTrackCell.h */,
+				A7E604D11B20A403000095AB /* ADTrackCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -492,12 +516,14 @@
 			files = (
 				8485331D1B1E4E20001E6DA3 /* ADBaseDataSource.m in Sources */,
 				A7EAC4D51B1F2009004B8A1F /* ADTrackViewModel.m in Sources */,
+				A7E604D21B20A403000095AB /* ADTrackCell.m in Sources */,
 				A7EAC4BF1B1EFD87004B8A1F /* ADArtist.m in Sources */,
 				A7EAC4C51B1EFDC7004B8A1F /* ADTrack.m in Sources */,
 				A7EAC4C21B1EFD92004B8A1F /* ADAlbum.m in Sources */,
 				8485330C1B1E4823001E6DA3 /* ADAlbumViewController.m in Sources */,
 				A7EAC4DC1B1F2B0D004B8A1F /* MTLModel+Dictionary.m in Sources */,
 				848532E21B1E42F5001E6DA3 /* ADArtistListViewController.m in Sources */,
+				A7E604CF1B20A3F7000095AB /* ADAlbumCell.m in Sources */,
 				A7EAC4CF1B1F1FE6004B8A1F /* ADArtistViewModel.m in Sources */,
 				8485330F1B1E49E2001E6DA3 /* ADAPIClient.m in Sources */,
 				848533181B1E4CCA001E6DA3 /* ADNetworkConstants.m in Sources */,
@@ -505,6 +531,7 @@
 				848533151B1E4C07001E6DA3 /* Constants.m in Sources */,
 				848532DF1B1E42F5001E6DA3 /* AppDelegate.m in Sources */,
 				A7EAC4C91B1F0784004B8A1F /* ADTimeline.m in Sources */,
+				A7E604CC1B20A3DF000095AB /* ADArtistCell.m in Sources */,
 				848532DC1B1E42F5001E6DA3 /* main.m in Sources */,
 				A7EAC4D21B1F1FF9004B8A1F /* ADAlbumViewModel.m in Sources */,
 				848533091B1E47EA001E6DA3 /* ADArtistDetailViewController.m in Sources */,

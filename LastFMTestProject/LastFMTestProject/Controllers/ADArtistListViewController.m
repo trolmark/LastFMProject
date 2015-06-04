@@ -9,10 +9,14 @@
 #import "ADArtistListViewController.h"
 #import "ADTimeline.h"
 #import "ADFeedSubclasses.h"
+#import "ADCollectionViewDataSource.h"
+#import "ADViewModels.h"
+#import "ADArtistCell.h"
 
 @interface ADArtistListViewController ()
 
 @property (nonatomic, strong) ADTimeline *feed;
+@property (nonatomic, strong) ADCollectionViewDataSource *dataSource;
 
 @end
 
@@ -34,12 +38,21 @@
     [self updateView];
 }
 
-- (void) setupCollectionView {
+- (void) setupCollectionView
+{
     self.collectionView.backgroundColor = [UIColor clearColor];
+    self.collectionView.delegate = self;
 }
 
-- (void) setupDataSource {
-    
+- (void) setupDataSource
+{
+    self.dataSource = [[ADCollectionViewDataSource alloc]
+                            initWithItems:@[]
+                            cellIdentifier:NSStringFromClass([ADArtistCell class])
+                            configureCellBlock:^(ADArtistCell *cell, ADArtistViewModel *item) {
+                                [cell configureWithData:item];
+                            }];
+    self.collectionView.dataSource = self.dataSource;
 }
 
 - (void) setupTimeline
@@ -71,7 +84,7 @@
     if (self.feed.allDownloaded) { return; };
     
     [self.feed getNextPage:^(NSArray *items) {
-        
+        [self.dataSource setItems:items];
     } failure:nil];
 }
 

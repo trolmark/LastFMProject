@@ -31,8 +31,17 @@
     return self;
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    [self setupDataSource];
+}
+
+- (void) setupDataSource {
+    
+}
+
+- (void) setupCollectionView {
     
 }
 

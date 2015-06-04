@@ -11,6 +11,7 @@
 #import "Support.h"
 #import "ADModels.h"
 #import "ADNetworkConstants.h"
+#import "MTLModel+JSON.h"
 
 
 @implementation ADAPIClient
@@ -40,22 +41,6 @@
 
 #pragma mark - API Private methods
 
-+ (NSDictionary *)modelClassesByResourcePath {
-    return @{
-             ADArtistListPath   : [ADArtist class],
-             ADAlbumListPath    : [ADAlbum class],
-             ADAlbumInfoPath    : [ADAlbum class],
-            };
-}
-
-+ (NSDictionary *)responseClassesByResourcePath {
-    return @{
-             ADArtistListPath   : [OVCResponse class],
-             ADAlbumListPath    : [OVCResponse class],
-             ADAlbumInfoPath    : [OVCResponse class],
-             };
-}
-
 
 - (RACSignal *) fetchArtistListAtPage:(NSInteger) page byCountry:(NSString *) country
 {
@@ -66,16 +51,28 @@
                              @"country" : country,
                              @"format"  : @"json"};
     
-    return [[self rac_GET:@"" parameters:params] map:^NSArray *(OVCResponse *response) {
-        return response.result;
+    return [[[self rac_GET:@"" parameters:params] map:^NSArray *(OVCResponse *response) {
+        return response.result[@"topartists"][@"artist"];
+    }] map:^NSArray *(NSArray *items) {
+        return [[[items rac_sequence] map:^ADArtist *(NSDictionary *value) {
+            return [ADArtist modelWithJSON:value];
+        }] array];
     }];
 }
 
 - (RACSignal *) fetchAlbumListAtPage:(NSInteger) page forArtist:(ADArtist *) artist
 {
-    return [[self rac_GET:@"" parameters:nil]  map:^NSArray *(OVCResponse *response) {
-        return response.result;
-    }];
+    NSDictionary *params = @{@"method"  : ADAlbumListPath,
+                             @"api_key" : kLastFMAPIKey,
+                             @"format"  : @"json"};
+    
+    return [[[self rac_GET:@"" parameters:nil]  map:^NSArray *(OVCResponse *response) {
+        return response.result[@"topalbums"][@"album"];
+    }] map:^NSArray *(NSArray *items) {
+        return [[[items rac_sequence] map:^ADAlbum *(NSDictionary *value) {
+            return [ADAlbum modelWithJSON:value];
+        }] array];
+    }];;
 }
 
 - (RACSignal *) fetchInfoForAlbum:(ADAlbum *) album

@@ -10,11 +10,14 @@
 #import "ADViewModels.h"
 #import "ADTimeline.h"
 #import "ADFeedSubclasses.h"
+#import "ADCollectionViewDataSource.h"
+#import "ADAlbumCell.h"
 
 @interface ADArtistDetailViewController ()
 
 @property (nonatomic, strong) ADArtistViewModel *viewModel;
 @property (nonatomic, strong) ADTimeline *feed;
+@property (nonatomic, strong) ADCollectionViewDataSource *dataSource;
 
 @end
 
@@ -39,11 +42,19 @@
     [self setupTimeline];
 }
 
-- (void) setupDataSource {
-    
+- (void) setupDataSource
+{
+    self.dataSource = [[ADCollectionViewDataSource alloc]
+                       initWithItems:@[]
+                       cellIdentifier:NSStringFromClass([ADAlbumCell class])
+                       configureCellBlock:^(ADAlbumCell *cell, ADAlbumViewModel *item) {
+                           [cell configureWithData:item];
+                       }];
+    self.collectionView.dataSource = self.dataSource;
 }
 
-- (void) setupCollectionView {
+- (void) setupCollectionView
+{
     self.collectionView.backgroundColor = [UIColor clearColor];
 }
 
@@ -76,7 +87,7 @@
     if (self.feed.allDownloaded) { return; };
     
     [self.feed getNextPage:^(NSArray *items) {
-        
+        [self.dataSource setItems:items];
     } failure:nil];
 }
 

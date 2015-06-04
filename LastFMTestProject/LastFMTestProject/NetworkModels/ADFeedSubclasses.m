@@ -9,6 +9,8 @@
 #import "ADFeedSubclasses.h"
 #import "Support.h"
 #import "ADAPIClient.h"
+#import "ADModels.h"
+#import "ADViewModels.h"
 
 @interface ADCountryFeedItem ()
 
@@ -30,6 +32,10 @@
 - (void)performNetworkRequestAtPage:(NSInteger)page withSuccess:(ResponseBlock)success failure:(ErrorBlock)failure
 {
     [[[ADAPIClient newAPIClient] fetchArtistListAtPage:page byCountry:_country] subscribeNext:^(NSArray *items) {
+        items = [[[items rac_sequence] map:^id(ADArtist *value) {
+            return [[ADArtistViewModel alloc] initWithModel:value];
+        }] array];
+        
         if (success) success(items);
     } error:^(NSError *error) {
         if (failure) failure(error);
@@ -58,6 +64,10 @@
 - (void)performNetworkRequestAtPage:(NSInteger)page withSuccess:(ResponseBlock)success failure:(ErrorBlock)failure
 {
     [[[ADAPIClient newAPIClient] fetchAlbumListAtPage:page forArtist:_artist] subscribeNext:^(NSArray *items) {
+        items = [[[items rac_sequence] map:^id(ADAlbum *value) {
+            return [[ADAlbumViewModel alloc] initWithModel:value];
+        }] array];
+        
         if (success) success(items);
     } error:^(NSError *error) {
         if (failure) failure(error);

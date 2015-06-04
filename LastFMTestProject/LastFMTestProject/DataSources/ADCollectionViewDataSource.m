@@ -33,7 +33,8 @@
 
 - (void)registerReusableViewsWithCollectionView:(UICollectionView *)collectionView
 {
-
+    [collectionView registerClass:NSClassFromString(self.defaultCellIdentifier)
+                        forCellWithReuseIdentifier:self.defaultCellIdentifier];
 }
 
 - (NSString *) cellIdentifierForIndexPath:(NSIndexPath *)path {
