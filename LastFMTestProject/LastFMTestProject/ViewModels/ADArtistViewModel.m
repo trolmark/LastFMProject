@@ -8,6 +8,8 @@
 
 #import "ADArtistViewModel.h"
 #import "ADModels.h"
+#import "RACSignal+Image.h"
+#import "Support.h"
 
 @interface ADArtistViewModel()
 
@@ -30,8 +32,8 @@
     return self;
 }
 
-- (void) setupPresentationLogic {
-    
+- (void) setupPresentationLogic
+{
 }
 
 @end

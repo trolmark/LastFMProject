@@ -15,5 +15,6 @@
 @property (nonatomic, strong, readonly) ADArtist *model;
 @property (nonatomic, strong, readonly) NSString *name;
 @property (nonatomic, assign, readonly) NSInteger playCount;
+@property (nonatomic, strong, readonly) NSData *thumbnailData;
 
 @end

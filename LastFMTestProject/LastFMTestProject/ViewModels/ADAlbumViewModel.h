@@ -13,5 +13,6 @@
 @interface ADAlbumViewModel : NSObject <ADViewModelProtocol>
 
 @property (nonatomic, strong, readonly) ADAlbum *model;
+@property (nonatomic, strong, readonly) NSData *thumbnailData;
 
 @end

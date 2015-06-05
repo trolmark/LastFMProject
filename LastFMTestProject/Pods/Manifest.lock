@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - FLKAutoLayout (0.2.1)
   - libextobjc (0.4.1):
     - libextobjc/EXTADT (= 0.4.1)
     - libextobjc/EXTConcreteProtocol (= 0.4.1)
@@ -80,6 +81,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - FLKAutoLayout (~> 0.2.1)
   - libextobjc (~> 0.4.1)
   - Mantle (~> 1.5.1)
   - OHHTTPStubs
@@ -89,10 +91,11 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  FLKAutoLayout: 9db6b30c2008d230da608e62c607b11c23b942e6
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
   OHHTTPStubs: dbd1957d414659783e07b49c961940b7564c23d9
   Overcoat: a8d02b26f11e72ca10b4d8d786f6df83b3277b28
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
 
-COCOAPODS: 0.36.3
+COCOAPODS: 0.37.1

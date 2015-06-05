@@ -8,11 +8,21 @@
 
 #import "ADAlbumCell.h"
 #import "ADAlbumViewModel.h"
+#import "Support.h"
+
+@interface ADAlbumCell()
+@property (nonatomic, weak) UIImageView *imageView;
+
+@end
 
 @implementation ADAlbumCell
 
 - (void) configureWithData:(ADAlbumViewModel *) data {
+    RACSignal *prepareForReuseSignal = [self rac_signalForSelector:@selector(prepareForReuse)];
     
+    RAC(self.imageView, image) = [[[RACObserve(data, thumbnailData) ignore:[NSNull null]] map:^(NSData *data) {
+        return [UIImage imageWithData:data];
+    }] takeUntil:prepareForReuseSignal];
 }
 
 @end
