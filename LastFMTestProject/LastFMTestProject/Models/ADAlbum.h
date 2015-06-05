@@ -11,11 +11,11 @@
 @class ADArtist;
 @interface ADAlbum : MTLModel <MTLJSONSerializing>
 
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSNumber *count;
-@property (nonatomic, strong) NSString *url;
-@property (nonatomic, strong) NSString *imageURL;
-@property (nonatomic, strong) NSString *imageThumbURL;
-@property (nonatomic, strong) ADArtist *artist;
+@property (nonatomic, copy, readonly) NSString *url;
+@property (nonatomic, copy, readonly) NSString *imageURL;
+@property (nonatomic, copy, readonly) NSString *imageThumbURL;
+@property (nonatomic, strong, readonly) ADArtist *artist;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "ADArtistListViewController.h"
+#import "ADArtistDetailViewController.h"
 #import "ADTimeline.h"
 #import "ADFeedSubclasses.h"
 #import "ADCollectionViewDataSource.h"
@@ -92,7 +93,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    ADArtistViewModel *viewModel = [self.dataSource itemAtIndexPath:indexPath];
+    ADArtistDetailViewController *detailController = [[ADArtistDetailViewController alloc] initWithArtistViewModel:viewModel];
+    [self.navigationController pushViewController:detailController animated:YES];
 }
 
 

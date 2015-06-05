@@ -7,6 +7,14 @@
 //
 
 #import "ADAlbum.h"
+#import "ADArtist.h"
+#import "ADLastFMHelper.h"
+
+@interface ADAlbum()
+
+@property (nonatomic, copy, readwrite) NSString *imageThumbURL;
+@property (nonatomic, copy, readwrite) NSString *imageURL;
+@end
 
 @implementation ADAlbum
 
@@ -14,9 +22,30 @@
     return @{
              @"rank" : @"rank",
              @"name" : @"name",
+             @"artist" : @"artist",
              @"count" : @"playcount",
-             @"artist" : @"artist"
-             };
+            };
 }
+
+
++ (NSValueTransformer *)artistJSONTransformer {
+    return [NSValueTransformer mtl_JSONDictionaryTransformerWithModelClass:ADArtist.class];
+}
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError **)error
+{
+    self = [super initWithDictionary:dictionaryValue error:error];
+    if (self == nil) return nil;
+    
+    // Process image array
+    NSArray *imageArray = [dictionaryValue objectForKey:@"image"];
+    NSString *imageThumbURL, *imageURL;
+    ADSetImageURLsForThumbAndImage(imageArray, &imageThumbURL, &imageURL);
+    self.imageThumbURL = imageThumbURL;
+    self.imageURL = imageURL;
+    
+    return self;
+}
+
 
 @end

@@ -7,11 +7,13 @@
 //
 
 #import "ADArtistDetailViewController.h"
+#import "ADAlbumViewController.h"
 #import "ADViewModels.h"
 #import "ADTimeline.h"
 #import "ADFeedSubclasses.h"
 #import "ADCollectionViewDataSource.h"
 #import "ADAlbumCell.h"
+#import "ADArtistDetailFlowLayout.h"
 
 @interface ADArtistDetailViewController ()
 
@@ -23,9 +25,12 @@
 
 @implementation ADArtistDetailViewController
 
-- (instancetype) initWithArtistViewModel:(ADArtistViewModel *) viewModel {
-    self = [super init];
-    if (!self) { return nil; }
+
+- (instancetype) initWithArtistViewModel:(ADArtistViewModel *) viewModel
+{
+    ADArtistDetailFlowLayout *flowLayout = [[ADArtistDetailFlowLayout alloc] init];
+    self = [self initWithCollectionViewLayout:flowLayout];
+    if (!self) return nil;
     
     if ([viewModel isKindOfClass:[ADArtistViewModel class]]) {
         self.viewModel = viewModel;
@@ -95,7 +100,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    ADAlbumViewModel *viewModel = [self.dataSource itemAtIndexPath:indexPath];
+    ADAlbumViewController *detailController = [[ADAlbumViewController alloc] initWithAlbumViewModel:viewModel];
+    [self.navigationController pushViewController:detailController animated:YES];
 }
 
 @end

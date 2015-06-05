@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ADArtistListViewController.h"
+#import "ADArtistListFlowLayout.h"
 
 @interface AppDelegate ()
 
@@ -18,7 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    ADArtistListViewController *artistListController = [[ADArtistListViewController alloc] initWithCollectionViewLayout:[[UICollectionViewFlowLayout alloc] init]];
+    ADArtistListViewController *artistListController = [[ADArtistListViewController alloc] initWithCollectionViewLayout:[[ADArtistListFlowLayout alloc] init]];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:artistListController];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

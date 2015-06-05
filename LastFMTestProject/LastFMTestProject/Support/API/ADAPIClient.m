@@ -41,6 +41,10 @@
 
 #pragma mark - API Private methods
 
++ (NSDictionary *)modelClassesByResourcePath {
+    return @{};
+}
+
 
 - (RACSignal *) fetchArtistListAtPage:(NSInteger) page byCountry:(NSString *) country
 {
@@ -66,7 +70,7 @@
                              @"api_key" : kLastFMAPIKey,
                              @"format"  : @"json"};
     
-    return [[[self rac_GET:@"" parameters:nil]  map:^NSArray *(OVCResponse *response) {
+    return [[[self rac_GET:@"" parameters:params]  map:^NSArray *(OVCResponse *response) {
         return response.result[@"topalbums"][@"album"];
     }] map:^NSArray *(NSArray *items) {
         return [[[items rac_sequence] map:^ADAlbum *(NSDictionary *value) {

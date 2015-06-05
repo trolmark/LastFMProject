@@ -11,7 +11,8 @@
 @interface ADArtist : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, copy, readonly) NSNumber *rank;
-@property (nonatomic, copy, readonly) NSNumber *count;
+@property (nonatomic, copy, readonly) NSNumber *listenersCount;
 @property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSString *imageThumbURL;
 
 @end
