@@ -14,5 +14,12 @@
 
 @property (nonatomic, strong, readonly) ADAlbum *model;
 @property (nonatomic, strong, readonly) NSData *thumbnailData;
+@property (nonatomic, copy, readonly) NSString *largeImageURL;
+@property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSString *playCountText;
+
+
+- (void) updateModel:(ADAlbum *) newModel;
+- (NSArray *) tracks;
 
 @end

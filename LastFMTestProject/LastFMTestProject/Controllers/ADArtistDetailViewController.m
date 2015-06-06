@@ -42,9 +42,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title = self.viewModel.name;
+    
     [self setupDataSource];
     [self setupCollectionView];
     [self setupTimeline];
+    [self.dataSource registerReusableViewsWithCollectionView:self.collectionView];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.view layoutIfNeeded];
+    [self updateView];
 }
 
 - (void) setupDataSource
@@ -65,7 +76,7 @@
 
 - (void) setupTimeline
 {
-    ADArtistFeedItem *feedItem = [[ADArtistFeedItem alloc] initWithArtist:nil];
+    ADArtistFeedItem *feedItem = [[ADArtistFeedItem alloc] initWithArtist:self.viewModel.model];
     self.feed = [[ADTimeline alloc] initWithFeedItem:feedItem];
 }
 
@@ -93,6 +104,7 @@
     
     [self.feed getNextPage:^(NSArray *items) {
         [self.dataSource setItems:items];
+        [self.collectionView reloadData];
     } failure:nil];
 }
 

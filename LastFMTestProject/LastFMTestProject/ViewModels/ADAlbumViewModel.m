@@ -8,9 +8,14 @@
 
 #import "ADAlbumViewModel.h"
 #import "ADModels.h"
+#import "ADImageHelper.h"
+#import "ADTrackViewModel.h"
 
 @interface ADAlbumViewModel()
+
 @property (nonatomic, strong) ADAlbum *model;
+@property (nonatomic, strong, readwrite) NSData *thumbnailData;
+
 @end
 
 @implementation ADAlbumViewModel
@@ -30,6 +35,25 @@
 
 - (void) setupPresentationLogic {
     
+    RAC(self, name) = RACObserve(self.model, name);
+    RAC(self, playCountText) = [RACObserve(self.model, count) map:^NSString *(NSNumber *value) {
+        return [NSString stringWithFormat:@"%ld playcount",(long)value.integerValue];
+    }];
+    
+    RAC(self, largeImageURL) = RACObserve(self.model, imageURL);
+    
+    [[ADImageHelper imageData:[NSURL URLWithString:self.model.imageThumbURL]]
+     subscribeNext:^(NSData *x) {
+         self.thumbnailData = x;
+     }];
+}
+
+- (void) updateModel:(ADAlbum *) newModel {
+    [self.model mergeValuesForKeysFromModel:newModel];
+}
+
+- (NSArray *) tracks {
+    return @[];
 }
 
 @end

@@ -8,12 +8,13 @@
 
 #import "ADArtistViewModel.h"
 #import "ADModels.h"
-#import "RACSignal+Image.h"
 #import "Support.h"
+#import "ADImageHelper.h"
 
 @interface ADArtistViewModel()
 
 @property (nonatomic, strong) ADArtist *model;
+@property (nonatomic, copy, readwrite) NSData *thumbnailData;
 
 @end
 
@@ -34,6 +35,15 @@
 
 - (void) setupPresentationLogic
 {
+    RAC(self, name) = RACObserve(self.model, name);
+    RAC(self, listenersCountText) = [RACObserve(self.model, listenersCount) map:^NSString *(NSNumber *value) {
+        return [NSString stringWithFormat:@"%ld listeners",(long)value.integerValue];
+    }];
+    
+    [[ADImageHelper imageData:[NSURL URLWithString:self.model.imageThumbURL]]
+        subscribeNext:^(NSData *x) {
+            self.thumbnailData = x;
+    }];
 }
 
 @end

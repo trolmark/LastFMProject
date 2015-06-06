@@ -8,6 +8,7 @@
 
 #import "ADTrackViewModel.h"
 #import "ADModels.h"
+#import "Support.h"
 
 @interface ADTrackViewModel()
 
@@ -31,7 +32,7 @@
 }
 
 - (void) setupPresentationLogic {
-    
+    //RAC(self,rank) = RACObserve(self.model, )
 }
 
 @end

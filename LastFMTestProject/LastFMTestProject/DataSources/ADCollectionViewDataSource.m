@@ -7,11 +7,13 @@
 //
 
 #import "ADCollectionViewDataSource.h"
+#import "ADCollectionViewMetrics.h"
 
 @interface ADCollectionViewDataSource()
 
 @property (nonatomic, copy) CellConfigureBlock configureCellBlock;
 @property (nonatomic, copy) NSString *defaultCellIdentifier;
+@property (nonatomic, strong) ADLayoutMetrics *layoutMetrics;
 
 @end
 
@@ -21,24 +23,41 @@
                cellIdentifier:(NSString *)aCellIdentifier
            configureCellBlock:(CellConfigureBlock)aConfigureCellBlock
 {
+    ADLayoutMetrics *layout = [[ADLayoutMetrics alloc] init];
+    ADCellLayoutMetrics *cellMetrics = [[ADCellLayoutMetrics alloc] initWithClass:NSClassFromString(aCellIdentifier)
+                                                                   cellIdentifier:aCellIdentifier useNib:NO];
+    layout.cellMetrics = @[cellMetrics];
+    self = [self initWithLayoutMetrics:layout configureCellBlock:aConfigureCellBlock];
+    [self setItems:anItems];
+    
+    return self;
+}
+
+- (instancetype) initWithLayoutMetrics:(ADLayoutMetrics *) layoutMetrics
+                    configureCellBlock:(CellConfigureBlock)aConfigureCellBlock
+{
     self = [super init];
     if (!self) {
         return nil;
     }
     
-    self.defaultCellIdentifier = aCellIdentifier;
+    self.layoutMetrics = layoutMetrics;
     self.configureCellBlock = [aConfigureCellBlock copy];
+    
     return self;
 }
 
 - (void)registerReusableViewsWithCollectionView:(UICollectionView *)collectionView
 {
-    [collectionView registerClass:NSClassFromString(self.defaultCellIdentifier)
-                        forCellWithReuseIdentifier:self.defaultCellIdentifier];
+    [self.layoutMetrics registerWithCollectionView:collectionView];
 }
 
-- (NSString *) cellIdentifierForIndexPath:(NSIndexPath *)path {
-    return self.defaultCellIdentifier;
+- (NSString *) cellIdentifierForIndexPath:(NSIndexPath *)path
+{
+    // By default, take first object. Can be overloaded in subclasses
+    
+    ADCellLayoutMetrics *cellMetrics = [[self.layoutMetrics cellMetrics] firstObject];
+    return cellMetrics.cellIdentifier;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -57,6 +76,21 @@
     return cell;
 }
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *view = nil;
+    
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        ADSupplementaryLayoutMetrics *metrics = [[self layoutMetrics] headerForSection:indexPath.section];
+        view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:metrics.reuseIdentifier forIndexPath:indexPath];
+    }
+    
+    if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
+        ADSupplementaryLayoutMetrics *metrics = [[self layoutMetrics] footerForSection:indexPath.section];
+        view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:metrics.reuseIdentifier forIndexPath:indexPath];
+    }
+    return view;
+}
 
 
 @end

@@ -12,10 +12,13 @@
 @class ADLayoutMetrics;
 @interface ADCollectionViewDataSource : ADBaseDataSource<UICollectionViewDataSource>
 
-
+// "Simple" initializer, for one type of cell
 - (instancetype) initWithItems:(NSArray *)anItems
                 cellIdentifier:(NSString *)aCellIdentifier
             configureCellBlock:(CellConfigureBlock)aConfigureCellBlock;
+
+- (instancetype) initWithLayoutMetrics:(ADLayoutMetrics *) layoutMetrics
+                    configureCellBlock:(CellConfigureBlock)aConfigureCellBlock;
 
 #pragma mark customize collection view methods
 

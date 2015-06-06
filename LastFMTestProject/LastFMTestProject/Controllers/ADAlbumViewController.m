@@ -8,10 +8,20 @@
 
 #import "ADAlbumViewController.h"
 #import "ADViewModels.h"
+#import "ADModels.h"
+#import "ADAPIClient.h"
+#import "ADCollectionViewDataSource.h"
+#import "ADTrackCell.h"
+#import "ADAlbumDetailFlowLayout.h"
+#import "ADImageHelper.h"
+#import "Support.h"
 
 @interface ADAlbumViewController ()
 
 @property (nonatomic, strong) ADAlbumViewModel *viewModel;
+@property (nonatomic, strong) ADCollectionViewDataSource *dataSource;
+@property (nonatomic, strong) UICollectionView *trackListView;
+@property (nonatomic, strong) UIImageView *coverImageView;
 
 @end
 
@@ -34,15 +44,59 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title = self.viewModel.name;
+    
+    [self setupCoverImage];
     [self setupDataSource];
+    [self fetchData];
 }
 
-- (void) setupDataSource {
+- (void) setupCoverImage
+{
+    self.coverImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [[ADImageHelper imageData:[NSURL URLWithString:self.viewModel.largeImageURL]]
+        subscribeNext:^(NSData *x) {
+            self.coverImageView.image = [[UIImage alloc] initWithData:x];
+     }];
     
+    [self.view addSubview:self.coverImageView];
 }
 
-- (void) setupCollectionView {
-    
+- (void) setupDataSource
+{
+    self.dataSource = [[ADCollectionViewDataSource alloc]
+                       initWithItems:@[]
+                       cellIdentifier:NSStringFromClass([ADTrackCell class])
+                       configureCellBlock:^(ADTrackCell *cell, ADTrackViewModel *item) {
+                           [cell configureWithData:item];
+                       }];
+    self.trackListView.dataSource = self.dataSource;
+}
+
+- (void) setupCollectionView
+{
+    ADAlbumDetailFlowLayout *layout = [[ADAlbumDetailFlowLayout alloc] init];
+    self.trackListView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
+    [self.view addSubview:self.trackListView];
+}
+
+
+- (void) fetchData
+{
+    [[[ADAPIClient newAPIClient] fetchInfoForAlbum:self.viewModel.model]
+        subscribeNext:^(ADAlbum *x) {
+            [self.viewModel updateModel:x];
+            [self updateUI];
+        } error:^(NSError *error) {
+            // Log error
+    }];
+}
+
+- (void) updateUI
+{
+    [self.dataSource setItems:[self.viewModel tracks]];
+    [self.trackListView reloadData];
 }
 
 

@@ -30,6 +30,8 @@
     [self setupDataSource];
     [self setupCollectionView];
     [self setupTimeline];
+    
+    [self.dataSource registerReusableViewsWithCollectionView:self.collectionView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -86,6 +88,7 @@
     
     [self.feed getNextPage:^(NSArray *items) {
         [self.dataSource setItems:items];
+        [self.collectionView reloadData];
     } failure:nil];
 }
 

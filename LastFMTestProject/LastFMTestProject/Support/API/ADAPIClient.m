@@ -68,6 +68,7 @@
 {
     NSDictionary *params = @{@"method"  : ADAlbumListPath,
                              @"api_key" : kLastFMAPIKey,
+                             @"artist"  : artist.name,
                              @"format"  : @"json"};
     
     return [[[self rac_GET:@"" parameters:params]  map:^NSArray *(OVCResponse *response) {
@@ -81,8 +82,16 @@
 
 - (RACSignal *) fetchInfoForAlbum:(ADAlbum *) album
 {
-    return [[self rac_GET:@"" parameters:nil]  map:^NSArray *(OVCResponse *response) {
+    NSDictionary *params = @{@"method"  : ADAlbumInfoPath,
+                             @"api_key" : kLastFMAPIKey,
+                             @"artist"  : album.artist.name,
+                             @"album"   : album.name,
+                             @"format"  : @"json"};
+    
+    return [[[self rac_GET:@"" parameters:params]  map:^NSArray *(OVCResponse *response) {
         return response.result;
+    }] map:^id(NSDictionary *value) {
+        return [ADAlbum modelWithJSON:value];
     }];
 }
 

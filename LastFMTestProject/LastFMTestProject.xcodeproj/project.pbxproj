@@ -22,6 +22,11 @@
 		848533181B1E4CCA001E6DA3 /* ADNetworkConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533171B1E4CCA001E6DA3 /* ADNetworkConstants.m */; };
 		8485331D1B1E4E20001E6DA3 /* ADBaseDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485331C1B1E4E20001E6DA3 /* ADBaseDataSource.m */; };
 		848533201B1E4EAD001E6DA3 /* ADCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485331F1B1E4EAD001E6DA3 /* ADCollectionViewDataSource.m */; };
+		848533271B2249AB001E6DA3 /* ADImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533261B2249AB001E6DA3 /* ADImageHelper.m */; };
+		8485332A1B236AA4001E6DA3 /* ADAlbumDetailFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533291B236AA4001E6DA3 /* ADAlbumDetailFlowLayout.m */; };
+		848533341B238A32001E6DA3 /* ADCellLayoutMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485332F1B238A32001E6DA3 /* ADCellLayoutMetrics.m */; };
+		848533351B238A32001E6DA3 /* ADLayoutMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533311B238A32001E6DA3 /* ADLayoutMetrics.m */; };
+		848533361B238A32001E6DA3 /* ADSupplementaryLayoutMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533331B238A32001E6DA3 /* ADSupplementaryLayoutMetrics.m */; };
 		A7E604CC1B20A3DF000095AB /* ADArtistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604CB1B20A3DF000095AB /* ADArtistCell.m */; };
 		A7E604CF1B20A3F7000095AB /* ADAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604CE1B20A3F7000095AB /* ADAlbumCell.m */; };
 		A7E604D21B20A403000095AB /* ADTrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604D11B20A403000095AB /* ADTrackCell.m */; };
@@ -82,6 +87,17 @@
 		8485331E1B1E4EAD001E6DA3 /* ADCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADCollectionViewDataSource.h; sourceTree = "<group>"; };
 		8485331F1B1E4EAD001E6DA3 /* ADCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADCollectionViewDataSource.m; sourceTree = "<group>"; };
 		848533211B1E4F13001E6DA3 /* Types.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Types.h; sourceTree = "<group>"; };
+		848533251B2249AB001E6DA3 /* ADImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADImageHelper.h; sourceTree = "<group>"; };
+		848533261B2249AB001E6DA3 /* ADImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADImageHelper.m; sourceTree = "<group>"; };
+		848533281B236AA4001E6DA3 /* ADAlbumDetailFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAlbumDetailFlowLayout.h; sourceTree = "<group>"; };
+		848533291B236AA4001E6DA3 /* ADAlbumDetailFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAlbumDetailFlowLayout.m; sourceTree = "<group>"; };
+		8485332E1B238A32001E6DA3 /* ADCellLayoutMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADCellLayoutMetrics.h; sourceTree = "<group>"; };
+		8485332F1B238A32001E6DA3 /* ADCellLayoutMetrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADCellLayoutMetrics.m; sourceTree = "<group>"; };
+		848533301B238A32001E6DA3 /* ADLayoutMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADLayoutMetrics.h; sourceTree = "<group>"; };
+		848533311B238A32001E6DA3 /* ADLayoutMetrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADLayoutMetrics.m; sourceTree = "<group>"; };
+		848533321B238A32001E6DA3 /* ADSupplementaryLayoutMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSupplementaryLayoutMetrics.h; sourceTree = "<group>"; };
+		848533331B238A32001E6DA3 /* ADSupplementaryLayoutMetrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSupplementaryLayoutMetrics.m; sourceTree = "<group>"; };
+		848533371B238CCF001E6DA3 /* ADCollectionViewMetrics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADCollectionViewMetrics.h; sourceTree = "<group>"; };
 		93771067284C48A0C0179DE7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		988DA25D5CD9476392BE3886 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E604CA1B20A3DF000095AB /* ADArtistCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADArtistCell.h; sourceTree = "<group>"; };
@@ -174,7 +190,7 @@
 		848532D81B1E42F5001E6DA3 /* LastFMTestProject */ = {
 			isa = PBXGroup;
 			children = (
-				A7E604C91B20A0DA000095AB /* CollectionViewLayouts */,
+				8485332B1B23899A001E6DA3 /* UICollectionViewSupport */,
 				A7EAC4DE1B1F2B75004B8A1F /* Transitions */,
 				A7EAC4CA1B1F085C004B8A1F /* Protocols */,
 				848533051B1E43D7001E6DA3 /* Support */,
@@ -265,6 +281,8 @@
 				A7EAC4D11B1F1FF9004B8A1F /* ADAlbumViewModel.m */,
 				A7EAC4D31B1F2009004B8A1F /* ADTrackViewModel.h */,
 				A7EAC4D41B1F2009004B8A1F /* ADTrackViewModel.m */,
+				848533251B2249AB001E6DA3 /* ADImageHelper.h */,
+				848533261B2249AB001E6DA3 /* ADImageHelper.m */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -316,6 +334,29 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		8485332B1B23899A001E6DA3 /* UICollectionViewSupport */ = {
+			isa = PBXGroup;
+			children = (
+				8485332D1B238A07001E6DA3 /* LayoutMetrics */,
+				A7E604C91B20A0DA000095AB /* CollectionViewLayouts */,
+			);
+			path = UICollectionViewSupport;
+			sourceTree = "<group>";
+		};
+		8485332D1B238A07001E6DA3 /* LayoutMetrics */ = {
+			isa = PBXGroup;
+			children = (
+				8485332E1B238A32001E6DA3 /* ADCellLayoutMetrics.h */,
+				8485332F1B238A32001E6DA3 /* ADCellLayoutMetrics.m */,
+				848533301B238A32001E6DA3 /* ADLayoutMetrics.h */,
+				848533311B238A32001E6DA3 /* ADLayoutMetrics.m */,
+				848533321B238A32001E6DA3 /* ADSupplementaryLayoutMetrics.h */,
+				848533331B238A32001E6DA3 /* ADSupplementaryLayoutMetrics.m */,
+				848533371B238CCF001E6DA3 /* ADCollectionViewMetrics.h */,
+			);
+			path = LayoutMetrics;
+			sourceTree = "<group>";
+		};
 		A7E604C91B20A0DA000095AB /* CollectionViewLayouts */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +364,8 @@
 				A7E88DE51B21C1B500B9C9AD /* ADArtistListFlowLayout.m */,
 				A7E88DE71B21C1C500B9C9AD /* ADArtistDetailFlowLayout.h */,
 				A7E88DE81B21C1C500B9C9AD /* ADArtistDetailFlowLayout.m */,
+				848533281B236AA4001E6DA3 /* ADAlbumDetailFlowLayout.h */,
+				848533291B236AA4001E6DA3 /* ADAlbumDetailFlowLayout.m */,
 			);
 			name = CollectionViewLayouts;
 			path = UICollectionViewLayouts;
@@ -529,6 +572,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				848533341B238A32001E6DA3 /* ADCellLayoutMetrics.m in Sources */,
 				8485331D1B1E4E20001E6DA3 /* ADBaseDataSource.m in Sources */,
 				A7E88DE91B21C1C500B9C9AD /* ADArtistDetailFlowLayout.m in Sources */,
 				A7EAC4D51B1F2009004B8A1F /* ADTrackViewModel.m in Sources */,
@@ -537,7 +581,9 @@
 				A7EAC4C51B1EFDC7004B8A1F /* ADTrack.m in Sources */,
 				A7EAC4C21B1EFD92004B8A1F /* ADAlbum.m in Sources */,
 				8485330C1B1E4823001E6DA3 /* ADAlbumViewController.m in Sources */,
+				848533271B2249AB001E6DA3 /* ADImageHelper.m in Sources */,
 				A7EAC4DC1B1F2B0D004B8A1F /* MTLModel+Dictionary.m in Sources */,
+				8485332A1B236AA4001E6DA3 /* ADAlbumDetailFlowLayout.m in Sources */,
 				848532E21B1E42F5001E6DA3 /* ADArtistListViewController.m in Sources */,
 				A7E604CF1B20A3F7000095AB /* ADAlbumCell.m in Sources */,
 				A7EAC4CF1B1F1FE6004B8A1F /* ADArtistViewModel.m in Sources */,
@@ -552,9 +598,11 @@
 				A7E88DE61B21C1B500B9C9AD /* ADArtistListFlowLayout.m in Sources */,
 				848532DC1B1E42F5001E6DA3 /* main.m in Sources */,
 				A7EAC4D21B1F1FF9004B8A1F /* ADAlbumViewModel.m in Sources */,
+				848533361B238A32001E6DA3 /* ADSupplementaryLayoutMetrics.m in Sources */,
 				848533091B1E47EA001E6DA3 /* ADArtistDetailViewController.m in Sources */,
 				A7EAC4DD1B1F2B0D004B8A1F /* MTLModel+JSON.m in Sources */,
 				848533121B1E4AAC001E6DA3 /* ADAPIClient+Stubs.m in Sources */,
+				848533351B238A32001E6DA3 /* ADLayoutMetrics.m in Sources */,
 				848533201B1E4EAD001E6DA3 /* ADCollectionViewDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

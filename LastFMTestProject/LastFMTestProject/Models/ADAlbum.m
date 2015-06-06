@@ -14,16 +14,17 @@
 
 @property (nonatomic, copy, readwrite) NSString *imageThumbURL;
 @property (nonatomic, copy, readwrite) NSString *imageURL;
+@property (nonatomic, copy, readwrite) NSDictionary *imageDic;
 @end
 
 @implementation ADAlbum
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
-             @"rank" : @"rank",
              @"name" : @"name",
              @"artist" : @"artist",
              @"count" : @"playcount",
+             @"imageDic":@"image"
             };
 }
 
@@ -38,7 +39,7 @@
     if (self == nil) return nil;
     
     // Process image array
-    NSArray *imageArray = [dictionaryValue objectForKey:@"image"];
+    NSArray *imageArray = dictionaryValue[@"imageDic"];
     NSString *imageThumbURL, *imageURL;
     ADSetImageURLsForThumbAndImage(imageArray, &imageThumbURL, &imageURL);
     self.imageThumbURL = imageThumbURL;
