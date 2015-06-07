@@ -16,6 +16,10 @@
 /// The height of the supplementary view. If set to 0, the view will be measured to determine its optimal height.
 @property (nonatomic) CGFloat height;
 
+- (instancetype)initWithClass:(Class) supplementaryClass
+                   identifier:(NSString *) supplementaryIdentifier
+                       useNib:(BOOL)useNib;
+
 
 - (void) registerWithCollectionView:(UICollectionView *) collectionView supplementaryKind:(NSString *) kind;
 

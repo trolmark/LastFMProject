@@ -11,7 +11,6 @@
 
 @interface ADCollectionViewDataSource()
 
-@property (nonatomic, copy) CellConfigureBlock configureCellBlock;
 @property (nonatomic, copy) NSString *defaultCellIdentifier;
 @property (nonatomic, strong) ADLayoutMetrics *layoutMetrics;
 
@@ -88,6 +87,10 @@
     if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
         ADSupplementaryLayoutMetrics *metrics = [[self layoutMetrics] footerForSection:indexPath.section];
         view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:metrics.reuseIdentifier forIndexPath:indexPath];
+    }
+    
+    if (self.configureSupplementaryBlock) {
+        self.configureSupplementaryBlock(view,kind,indexPath);
     }
     return view;
 }

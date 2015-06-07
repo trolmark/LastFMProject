@@ -12,6 +12,9 @@
 @class ADLayoutMetrics;
 @interface ADCollectionViewDataSource : ADBaseDataSource<UICollectionViewDataSource>
 
+@property (nonatomic, copy) CellConfigureBlock configureCellBlock;
+@property (nonatomic, copy) SupplementaryConfigureBlock configureSupplementaryBlock;
+
 // "Simple" initializer, for one type of cell
 - (instancetype) initWithItems:(NSArray *)anItems
                 cellIdentifier:(NSString *)aCellIdentifier

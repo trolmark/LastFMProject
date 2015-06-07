@@ -71,13 +71,13 @@
                              @"artist"  : artist.name,
                              @"format"  : @"json"};
     
-    return [[[self rac_GET:@"" parameters:params]  map:^NSArray *(OVCResponse *response) {
+    return [[[[self rac_GET:@"" parameters:params]  map:^NSArray *(OVCResponse *response) {
         return response.result[@"topalbums"][@"album"];
     }] map:^NSArray *(NSArray *items) {
         return [[[items rac_sequence] map:^ADAlbum *(NSDictionary *value) {
             return [ADAlbum modelWithJSON:value];
         }] array];
-    }];;
+    }] deliverOnMainThread];;
 }
 
 - (RACSignal *) fetchInfoForAlbum:(ADAlbum *) album
@@ -89,9 +89,11 @@
                              @"format"  : @"json"};
     
     return [[[self rac_GET:@"" parameters:params]  map:^NSArray *(OVCResponse *response) {
-        return response.result;
-    }] map:^id(NSDictionary *value) {
-        return [ADAlbum modelWithJSON:value];
+        return response.result[@"album"][@"tracks"][@"track"];
+    }] map:^NSArray *(NSArray *items)  {
+        return [[[items rac_sequence] map:^ADTrack *(NSDictionary *value) {
+            return [ADTrack modelWithJSON:value];
+        }] array];
     }];
 }
 

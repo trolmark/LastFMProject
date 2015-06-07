@@ -27,6 +27,7 @@
 		848533341B238A32001E6DA3 /* ADCellLayoutMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485332F1B238A32001E6DA3 /* ADCellLayoutMetrics.m */; };
 		848533351B238A32001E6DA3 /* ADLayoutMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533311B238A32001E6DA3 /* ADLayoutMetrics.m */; };
 		848533361B238A32001E6DA3 /* ADSupplementaryLayoutMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533331B238A32001E6DA3 /* ADSupplementaryLayoutMetrics.m */; };
+		8485333A1B239976001E6DA3 /* ADAlbumCoverHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533391B239976001E6DA3 /* ADAlbumCoverHeaderView.m */; };
 		A7E604CC1B20A3DF000095AB /* ADArtistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604CB1B20A3DF000095AB /* ADArtistCell.m */; };
 		A7E604CF1B20A3F7000095AB /* ADAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604CE1B20A3F7000095AB /* ADAlbumCell.m */; };
 		A7E604D21B20A403000095AB /* ADTrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604D11B20A403000095AB /* ADTrackCell.m */; };
@@ -98,6 +99,8 @@
 		848533321B238A32001E6DA3 /* ADSupplementaryLayoutMetrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADSupplementaryLayoutMetrics.h; sourceTree = "<group>"; };
 		848533331B238A32001E6DA3 /* ADSupplementaryLayoutMetrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADSupplementaryLayoutMetrics.m; sourceTree = "<group>"; };
 		848533371B238CCF001E6DA3 /* ADCollectionViewMetrics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADCollectionViewMetrics.h; sourceTree = "<group>"; };
+		848533381B239976001E6DA3 /* ADAlbumCoverHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAlbumCoverHeaderView.h; sourceTree = "<group>"; };
+		848533391B239976001E6DA3 /* ADAlbumCoverHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAlbumCoverHeaderView.m; sourceTree = "<group>"; };
 		93771067284C48A0C0179DE7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		988DA25D5CD9476392BE3886 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E604CA1B20A3DF000095AB /* ADArtistCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADArtistCell.h; sourceTree = "<group>"; };
@@ -267,6 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				A7EAC4D61B1F29E1004B8A1F /* Cells */,
+				848533381B239976001E6DA3 /* ADAlbumCoverHeaderView.h */,
+				848533391B239976001E6DA3 /* ADAlbumCoverHeaderView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -601,6 +606,7 @@
 				848533361B238A32001E6DA3 /* ADSupplementaryLayoutMetrics.m in Sources */,
 				848533091B1E47EA001E6DA3 /* ADArtistDetailViewController.m in Sources */,
 				A7EAC4DD1B1F2B0D004B8A1F /* MTLModel+JSON.m in Sources */,
+				8485333A1B239976001E6DA3 /* ADAlbumCoverHeaderView.m in Sources */,
 				848533121B1E4AAC001E6DA3 /* ADAPIClient+Stubs.m in Sources */,
 				848533351B238A32001E6DA3 /* ADLayoutMetrics.m in Sources */,
 				848533201B1E4EAD001E6DA3 /* ADCollectionViewDataSource.m in Sources */,

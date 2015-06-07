@@ -31,8 +31,22 @@
     return self;
 }
 
-- (void) setupPresentationLogic {
-    //RAC(self,rank) = RACObserve(self.model, )
+- (void) setupPresentationLogic
+{
+    RAC(self, title) = [RACSignal
+                            combineLatest:@[ RACObserve(self.model, name), RACObserve(self.model, duration) ]
+                            reduce:^(NSString *name, NSNumber *duration) {
+                                return [NSString stringWithFormat:@"%@ %@",name,[self formatTime:duration]];
+                            }];
+}
+
+- (NSString *) formatTime:(NSNumber *)time
+{
+    NSInteger totalSeconds = [time intValue];
+    int seconds = totalSeconds % 60;
+    int minutes = (totalSeconds / 60) % 60;
+    
+    return [NSString stringWithFormat:@"%02d:%02d",minutes, seconds];
 }
 
 @end

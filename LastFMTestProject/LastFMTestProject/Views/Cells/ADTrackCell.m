@@ -8,11 +8,35 @@
 
 #import "ADTrackCell.h"
 #import "ADTrackViewModel.h"
+#import "Support.h"
+
+@interface ADTrackCell()
+
+@property (nonatomic, strong) UILabel *titleLabel;
+
+@end
 
 @implementation ADTrackCell
 
-- (void) configureWithData:(ADTrackViewModel *) data {
+- (instancetype) initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (!self) return nil;
     
+    self.backgroundColor = [UIColor whiteColor];
+    [self setupLayout];
+    
+    return self;
+}
+
+- (void) setupLayout {
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    [self.contentView addSubview:self.titleLabel];
+    [self.titleLabel alignToView:self.contentView];
+}
+
+- (void) configureWithData:(ADTrackViewModel *) data
+{
+    self.titleLabel.text = data.title;
 }
 
 @end

@@ -13,12 +13,14 @@
 -(instancetype)init {
     if (!(self = [super init])) return nil;
     
-    self.itemSize = CGSizeMake(145, 44);
+    self.itemSize = CGSizeMake(300, 44);
     self.minimumInteritemSpacing = 10;
     self.minimumLineSpacing = 10;
     self.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     
     return self;
 }
+
+
 
 @end

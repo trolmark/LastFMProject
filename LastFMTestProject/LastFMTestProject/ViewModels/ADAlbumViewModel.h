@@ -8,18 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import "ADViewModelProtocol.h"
+#import "Types.h"
 
 @class ADAlbum;
 @interface ADAlbumViewModel : NSObject <ADViewModelProtocol>
 
 @property (nonatomic, strong, readonly) ADAlbum *model;
 @property (nonatomic, strong, readonly) NSData *thumbnailData;
-@property (nonatomic, copy, readonly) NSString *largeImageURL;
+@property (nonatomic, strong, readonly) NSURL *largeImageURL;
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *playCountText;
 
 
 - (void) updateModel:(ADAlbum *) newModel;
 - (NSArray *) tracks;
+- (void) fetchAlbumInfoWithSuccess:(ResponseBlock)success failure:(ErrorBlock)failure;
 
 @end

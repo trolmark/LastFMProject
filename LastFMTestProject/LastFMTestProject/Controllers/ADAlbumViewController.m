@@ -15,24 +15,25 @@
 #import "ADAlbumDetailFlowLayout.h"
 #import "ADImageHelper.h"
 #import "Support.h"
+#import "ADCollectionViewMetrics.h"
+#import "ADAlbumCoverHeaderView.h"
 
 @interface ADAlbumViewController ()
 
 @property (nonatomic, strong) ADAlbumViewModel *viewModel;
 @property (nonatomic, strong) ADCollectionViewDataSource *dataSource;
-@property (nonatomic, strong) UICollectionView *trackListView;
-@property (nonatomic, strong) UIImageView *coverImageView;
 
 @end
 
 @implementation ADAlbumViewController
 
 
-- (instancetype) initWithAlbumViewModel:(ADAlbumViewModel *) viewModel {
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
+- (instancetype) initWithAlbumViewModel:(ADAlbumViewModel *) viewModel
+{
+    ADAlbumDetailFlowLayout *flowLayout = [[ADAlbumDetailFlowLayout alloc] init];
+    self = [self initWithCollectionViewLayout:flowLayout];
+    if (!self) return nil;
+    
     
     if ([viewModel isKindOfClass:[ADAlbumViewModel class]]) {
         self.viewModel = viewModel;
@@ -46,60 +47,63 @@
     [super viewDidLoad];
     
     self.title = self.viewModel.name;
-    
-    [self setupCoverImage];
-    [self setupDataSource];
-    [self fetchData];
-}
+    self.collectionView.backgroundColor = [UIColor clearColor];
 
-- (void) setupCoverImage
-{
-    self.coverImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    [[ADImageHelper imageData:[NSURL URLWithString:self.viewModel.largeImageURL]]
-        subscribeNext:^(NSData *x) {
-            self.coverImageView.image = [[UIImage alloc] initWithData:x];
-     }];
+    [self setupDataSource];
+    [self.dataSource registerReusableViewsWithCollectionView:self.collectionView];
     
-    [self.view addSubview:self.coverImageView];
+    [self fetchData];
 }
 
 - (void) setupDataSource
 {
+    ADCellLayoutMetrics *cellMetrics = [[ADCellLayoutMetrics alloc]
+                                            initWithClass:[ADTrackCell class]
+                                            cellIdentifier:NSStringFromClass([ADTrackCell class])
+                                            useNib:NO];
+    
+    ADSupplementaryLayoutMetrics *headerMetrics = [[ADSupplementaryLayoutMetrics alloc]
+                                                        initWithClass:[ADAlbumCoverHeaderView class]
+                                                        identifier:NSStringFromClass([ADAlbumCoverHeaderView class])
+                                                        useNib:NO];
+    
+    ADLayoutMetrics *layoutMetrics = [[ADLayoutMetrics alloc] init];
+    layoutMetrics.cellMetrics = @[cellMetrics];
+    layoutMetrics.headers = @[headerMetrics];
+    
     self.dataSource = [[ADCollectionViewDataSource alloc]
-                       initWithItems:@[]
-                       cellIdentifier:NSStringFromClass([ADTrackCell class])
-                       configureCellBlock:^(ADTrackCell *cell, ADTrackViewModel *item) {
-                           [cell configureWithData:item];
-                       }];
-    self.trackListView.dataSource = self.dataSource;
+                            initWithLayoutMetrics:layoutMetrics
+                            configureCellBlock:^(ADTrackCell *cell, ADTrackViewModel *item) {
+                                [cell configureWithData:item];
+                            }];
+    
+    @weakify(self)
+    self.dataSource.configureSupplementaryBlock = ^(ADAlbumCoverHeaderView *supplementary, NSString *kind, NSIndexPath *path) {
+        @strongify(self)
+        if (UICollectionElementKindSectionHeader == kind) {
+            [supplementary configureWithData:self.viewModel];
+        }
+    };
+    
+    self.collectionView.dataSource = self.dataSource;
 }
-
-- (void) setupCollectionView
-{
-    ADAlbumDetailFlowLayout *layout = [[ADAlbumDetailFlowLayout alloc] init];
-    self.trackListView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-    [self.view addSubview:self.trackListView];
-}
-
 
 - (void) fetchData
 {
-    [[[ADAPIClient newAPIClient] fetchInfoForAlbum:self.viewModel.model]
-        subscribeNext:^(ADAlbum *x) {
-            [self.viewModel updateModel:x];
-            [self updateUI];
-        } error:^(NSError *error) {
-            // Log error
+    @weakify(self)
+    [self.viewModel fetchAlbumInfoWithSuccess:^(NSArray *tracks) {
+        @strongify(self)
+        [self.dataSource setItems:tracks];
+        [self.collectionView reloadData];
+    } failure:^(NSError *error) {
+        
     }];
 }
 
-- (void) updateUI
+- (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    [self.dataSource setItems:[self.viewModel tracks]];
-    [self.trackListView reloadData];
+    return CGSizeMake(collectionView.frame.size.width, 150);
 }
-
-
 
 
 @end

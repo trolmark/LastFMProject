@@ -10,4 +10,9 @@
 
 @interface ADTrack : MTLModel <MTLJSONSerializing>
 
+@property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSNumber *duration;
+
+
+
 @end

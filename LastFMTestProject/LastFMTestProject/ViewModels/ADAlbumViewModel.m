@@ -10,6 +10,7 @@
 #import "ADModels.h"
 #import "ADImageHelper.h"
 #import "ADTrackViewModel.h"
+#import "ADAPIClient.h"
 
 @interface ADAlbumViewModel()
 
@@ -40,7 +41,9 @@
         return [NSString stringWithFormat:@"%ld playcount",(long)value.integerValue];
     }];
     
-    RAC(self, largeImageURL) = RACObserve(self.model, imageURL);
+    RAC(self, largeImageURL) = [RACObserve(self.model, imageURL) map:^id(NSString *value) {
+        return [NSURL URLWithString:value];
+    }];
     
     [[ADImageHelper imageData:[NSURL URLWithString:self.model.imageThumbURL]]
      subscribeNext:^(NSData *x) {
@@ -54,6 +57,20 @@
 
 - (NSArray *) tracks {
     return @[];
+}
+
+- (void) fetchAlbumInfoWithSuccess:(ResponseBlock)success failure:(ErrorBlock)failure
+{
+    [[[ADAPIClient newAPIClient] fetchInfoForAlbum:self.model]
+     subscribeNext:^(NSArray *items) {
+         items = [[[items rac_sequence] map:^id(ADTrack *value) {
+             return [[ADTrackViewModel alloc] initWithModel:value];
+         }] array];
+         
+         if (success) success(items);
+     } error:^(NSError *error) {
+         if (failure) failure(error);
+     }];
 }
 
 @end
