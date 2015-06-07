@@ -37,7 +37,7 @@
 {
     if (self.downloadLock) { return; }
     
-    _downloadLock = YES;
+    self.downloadLock = YES;
     @weakify(self);
     
     [self.feedItem performNetworkRequestAtPage:self.currentPage withSuccess:^(NSArray *items) {

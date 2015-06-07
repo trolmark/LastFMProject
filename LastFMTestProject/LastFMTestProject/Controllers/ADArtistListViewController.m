@@ -18,6 +18,7 @@
 #include "REMenu.h"
 #import "ADNavMenuItem.h"
 #import "ADMenuItem.h"
+#import "PCAngularActivityIndicatorView.h"
 
 @interface ADArtistListViewController ()
 

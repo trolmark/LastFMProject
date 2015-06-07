@@ -14,8 +14,6 @@
 
 @interface ADFeedViewController()
 
-@property (nonatomic, strong) PCAngularActivityIndicatorView *loadingIndicator;
-
 @end
 
 @implementation ADFeedViewController
@@ -25,17 +23,23 @@
     [self setupLoadingIndicator];
 }
 
-- (void) setupLoadingIndicator
-{
-    self.loadingIndicator = [[PCAngularActivityIndicatorView alloc] initWithActivityIndicatorStyle:PCAngularActivityIndicatorViewStyleLarge];
-    self.loadingIndicator.color = [UIColor redColor];
-    [self.view addSubview:self.loadingIndicator];
+- (void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.loadingIndicator layoutIfNeeded];
     
-    [RACObserve(self.feed, loading) subscribeNext:^(NSNumber *loading) {
+    
+    [RACObserve(self.feed, downloadLock) subscribeNext:^(NSNumber *loading) {
         [loading boolValue] ? [self.loadingIndicator startAnimating] : [self.loadingIndicator stopAnimating];
     }];
 }
 
+- (void) setupLoadingIndicator
+{
+    self.loadingIndicator = [[PCAngularActivityIndicatorView alloc] initWithActivityIndicatorStyle:PCAngularActivityIndicatorViewStyleLarge];
+    self.loadingIndicator.color = [UIColor lightGrayColor];
+    [self.view addSubview:self.loadingIndicator];
+    self.loadingIndicator.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
+}
 
 - (void)refreshFeed
 {

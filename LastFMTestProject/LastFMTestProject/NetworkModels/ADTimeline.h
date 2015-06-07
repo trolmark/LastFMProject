@@ -13,7 +13,7 @@
 @interface ADTimeline : NSObject
 
 @property (readonly, nonatomic, assign) BOOL allDownloaded;
-@property (nonatomic, assign, getter=isLoading) BOOL loading;
+@property (readonly, nonatomic, assign) BOOL downloadLock;
 
 - (instancetype) initWithFeedItem:(id<ADFeedNetworkProtocol>) feedItem;
 

@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class ADTimeline, ADCollectionViewDataSource;
+@class ADTimeline, ADCollectionViewDataSource, PCAngularActivityIndicatorView;
 @interface ADFeedViewController : UICollectionViewController
 
 @property (nonatomic, strong) ADTimeline *feed;
 @property (nonatomic, strong) ADCollectionViewDataSource *dataSource;
+@property (nonatomic, strong) PCAngularActivityIndicatorView *loadingIndicator;
 
 - (void)refreshFeed;
 - (void)loadNextFeedPage;
