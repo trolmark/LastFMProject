@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ADFeedViewController.h"
 
-@interface ADArtistListViewController : UICollectionViewController
+@interface ADArtistListViewController : ADFeedViewController
 
 
 @end

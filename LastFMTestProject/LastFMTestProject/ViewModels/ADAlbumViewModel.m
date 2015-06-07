@@ -38,7 +38,7 @@
     
     RAC(self, name) = RACObserve(self.model, name);
     RAC(self, playCountText) = [RACObserve(self.model, count) map:^NSString *(NSNumber *value) {
-        return [NSString stringWithFormat:@"%ld playcount",(long)value.integerValue];
+        return [NSString stringWithFormat:@"%ld plays",(long)value.integerValue];
     }];
     
     RAC(self, largeImageURL) = [RACObserve(self.model, imageURL) map:^id(NSString *value) {

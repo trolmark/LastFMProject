@@ -8,6 +8,7 @@ pod 'AFNetworking'
 pod 'Mantle', '~> 1.5.1'
 pod 'ReactiveCocoa'
 pod 'FLKAutoLayout', '~> 0.2.1'
+pod 'REMenu', '~> 1.10'
 
 # Language sugar
 pod 'libextobjc', '~> 0.4.1'

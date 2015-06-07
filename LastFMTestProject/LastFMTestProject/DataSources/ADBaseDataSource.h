@@ -23,6 +23,7 @@
 // Update item at index path
 - (void) updateItemAtIndexPath:(NSIndexPath *)path withItem:(id) item;
 
+-(void) addItems:(NSArray *)newItems;
 
 - (void)setItems:(NSArray *)items;
 

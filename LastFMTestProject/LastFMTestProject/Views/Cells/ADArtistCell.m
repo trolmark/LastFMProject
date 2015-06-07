@@ -42,11 +42,13 @@
     self.artistLabel = [[UILabel alloc] initWithFrame:CGRectZero];
      [self.contentView addSubview:self.artistLabel];
     [self.artistLabel alignTop:@"10" leading:@"70" toView:self.imageView];
+    self.artistLabel.font = [UIFont fontWithName:kBaseFont size:18];
     
     self.listenersCountLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.listenersCountLabel];
     [self.listenersCountLabel alignTopEdgeWithView:self.artistLabel predicate:@"20"];
     [self.listenersCountLabel alignLeadingEdgeWithView:self.imageView predicate:@"70"];
+    self.listenersCountLabel.font = [UIFont fontWithName:kBaseFont size:15];
     
 }
 

@@ -18,8 +18,6 @@
 @interface ADArtistDetailViewController ()
 
 @property (nonatomic, strong) ADArtistViewModel *viewModel;
-@property (nonatomic, strong) ADTimeline *feed;
-@property (nonatomic, strong) ADCollectionViewDataSource *dataSource;
 
 @end
 
@@ -44,19 +42,13 @@
     [super viewDidLoad];
     
     self.title = self.viewModel.name;
+    self.collectionView.backgroundColor = [UIColor whiteColor];
     
     [self setupDataSource];
-    [self setupCollectionView];
     [self setupTimeline];
     [self.dataSource registerReusableViewsWithCollectionView:self.collectionView];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [self.view layoutIfNeeded];
-    [self updateView];
-}
 
 - (void) setupDataSource
 {
@@ -69,43 +61,10 @@
     self.collectionView.dataSource = self.dataSource;
 }
 
-- (void) setupCollectionView
-{
-    self.collectionView.backgroundColor = [UIColor clearColor];
-}
-
 - (void) setupTimeline
 {
     ADArtistFeedItem *feedItem = [[ADArtistFeedItem alloc] initWithArtist:self.viewModel.model];
     self.feed = [[ADTimeline alloc] initWithFeedItem:feedItem];
-}
-
-- (void)updateView
-{
-    BOOL allDownloaded = self.feed.allDownloaded;
-    [self.collectionView reloadData];
-    if (!allDownloaded) {
-        [self checkContentSize];
-    }
-}
-
-- (void)checkContentSize
-{
-    CGFloat contentHeight = self.collectionView.contentSize.height;
-    CGFloat frameHeight = self.collectionView.frame.size.height;
-    if (contentHeight < frameHeight){
-        [self getNextItemSet];
-    }
-}
-
-- (void)getNextItemSet
-{
-    if (self.feed.allDownloaded) { return; };
-    
-    [self.feed getNextPage:^(NSArray *items) {
-        [self.dataSource setItems:items];
-        [self.collectionView reloadData];
-    } failure:nil];
 }
 
 #pragma mark - UICollectionViewProtocol

@@ -29,8 +29,7 @@
     self = [super init];
     if (!self) { return nil; }
     
-    self.currentPage = 1;
-    self.feedItem = feedItem;
+    [self updateFeedItem:feedItem];
     return self;
 }
 
@@ -63,6 +62,14 @@
         
         if(failure) failure(error);
     }];
+}
+
+
+- (void) updateFeedItem:(id<ADFeedNetworkProtocol>) feedItem
+{
+    self.currentPage = 1;
+    self->_allDownloaded = NO;
+    self.feedItem = feedItem;
 }
 
 @end

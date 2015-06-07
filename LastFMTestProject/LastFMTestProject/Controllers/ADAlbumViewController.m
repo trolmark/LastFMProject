@@ -47,7 +47,7 @@
     [super viewDidLoad];
     
     self.title = self.viewModel.name;
-    self.collectionView.backgroundColor = [UIColor clearColor];
+    self.collectionView.backgroundColor = [UIColor whiteColor];
 
     [self setupDataSource];
     [self.dataSource registerReusableViewsWithCollectionView:self.collectionView];

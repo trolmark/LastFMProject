@@ -96,6 +96,12 @@
 #define COCOAPODS_VERSION_MINOR_Overcoat_ReactiveCocoa 1
 #define COCOAPODS_VERSION_PATCH_Overcoat_ReactiveCocoa 1
 
+// REMenu
+#define COCOAPODS_POD_AVAILABLE_REMenu
+#define COCOAPODS_VERSION_MAJOR_REMenu 1
+#define COCOAPODS_VERSION_MINOR_REMenu 10
+#define COCOAPODS_VERSION_PATCH_REMenu 0
+
 // ReactiveCocoa
 #define COCOAPODS_POD_AVAILABLE_ReactiveCocoa
 #define COCOAPODS_VERSION_MAJOR_ReactiveCocoa 2

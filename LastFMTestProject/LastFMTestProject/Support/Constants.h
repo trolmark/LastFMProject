@@ -6,6 +6,7 @@
 
 extern NSString * const kBaseAPIURL;
 extern NSString * const kLastFMAPIKey;
+extern NSString * const kBaseFont;
 
 
 

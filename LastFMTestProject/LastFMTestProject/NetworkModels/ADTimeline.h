@@ -17,6 +17,7 @@
 
 - (instancetype) initWithFeedItem:(id<ADFeedNetworkProtocol>) feedItem;
 
-- (void)getNextPage:(ResponseBlock)success failure:(ErrorBlock)failure;
+- (void) getNextPage:(ResponseBlock)success failure:(ErrorBlock)failure;
+- (void) updateFeedItem:(id<ADFeedNetworkProtocol>) feedItem;
 
 @end

@@ -12,6 +12,7 @@
 #import "ADModels.h"
 #import "ADNetworkConstants.h"
 #import "MTLModel+JSON.h"
+#import "MTLModel+Dictionary.h"
 
 
 @implementation ADAPIClient
@@ -53,6 +54,7 @@
     NSDictionary *params = @{@"method"  : ADArtistListPath,
                              @"api_key" : kLastFMAPIKey,
                              @"country" : country,
+                             @"page"    : @(page),
                              @"format"  : @"json"};
     
     return [[[self rac_GET:@"" parameters:params] map:^NSArray *(OVCResponse *response) {
@@ -69,15 +71,18 @@
     NSDictionary *params = @{@"method"  : ADAlbumListPath,
                              @"api_key" : kLastFMAPIKey,
                              @"artist"  : artist.name,
+                             @"page"    : @(page),
                              @"format"  : @"json"};
     
     return [[[[self rac_GET:@"" parameters:params]  map:^NSArray *(OVCResponse *response) {
         return response.result[@"topalbums"][@"album"];
     }] map:^NSArray *(NSArray *items) {
-        return [[[items rac_sequence] map:^ADAlbum *(NSDictionary *value) {
+        return [[[[items rac_sequence] filter:^BOOL(NSDictionary *value) {
+            return [value isKindOfClass:[NSDictionary class]];
+        }] map:^ADAlbum *(NSDictionary *value) {
             return [ADAlbum modelWithJSON:value];
         }] array];
-    }] deliverOnMainThread];;
+    }] deliverOnMainThread];
 }
 
 - (RACSignal *) fetchInfoForAlbum:(ADAlbum *) album
@@ -91,8 +96,10 @@
     return [[[self rac_GET:@"" parameters:params]  map:^NSArray *(OVCResponse *response) {
         return response.result[@"album"][@"tracks"][@"track"];
     }] map:^NSArray *(NSArray *items)  {
-        return [[[items rac_sequence] map:^ADTrack *(NSDictionary *value) {
-            return [ADTrack modelWithJSON:value];
+        return [[[[items rac_sequence] filter:^BOOL(NSDictionary *value) {
+            return [value isKindOfClass:[NSDictionary class]];
+        }] map:^ADTrack *(NSDictionary *value) {
+                return [ADTrack modelWithJSON:value];
         }] array];
     }];
 }

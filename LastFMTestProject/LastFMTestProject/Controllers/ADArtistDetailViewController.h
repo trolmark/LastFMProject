@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ADFeedViewController.h"
 
 @class ADArtistViewModel;
-@interface ADArtistDetailViewController : UICollectionViewController
+@interface ADArtistDetailViewController : ADFeedViewController
 
 - (instancetype) initWithArtistViewModel:(ADArtistViewModel *) viewModel;
 

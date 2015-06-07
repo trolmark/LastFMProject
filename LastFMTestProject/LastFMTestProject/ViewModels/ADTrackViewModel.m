@@ -34,9 +34,9 @@
 - (void) setupPresentationLogic
 {
     RAC(self, title) = [RACSignal
-                            combineLatest:@[ RACObserve(self.model, name), RACObserve(self.model, duration) ]
-                            reduce:^(NSString *name, NSNumber *duration) {
-                                return [NSString stringWithFormat:@"%@ %@",name,[self formatTime:duration]];
+                            combineLatest:@[RACObserve(self.model,rank),RACObserve(self.model, name), RACObserve(self.model, duration) ]
+                            reduce:^(NSNumber *rank, NSString *name, NSNumber *duration) {
+                                return [NSString stringWithFormat:@"%d. %@ %@",[rank intValue],name,[self formatTime:duration]];
                             }];
 }
 

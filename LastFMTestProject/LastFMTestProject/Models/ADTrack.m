@@ -8,13 +8,18 @@
 
 #import "ADTrack.h"
 
+@interface ADTrack()
+
+@end
+
 @implementation ADTrack
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
     return @{
              @"name" : @"name",
-             @"duration" : @"duration"
+             @"duration" : @"duration",
              };
 }
+
 
 @end

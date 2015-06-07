@@ -85,6 +85,13 @@
     batchUpdates();
 }
 
+- (void) addItems:(NSArray *)newItems
+{
+    NSMutableArray *oldItems = [NSMutableArray arrayWithArray:self.items];
+    [oldItems addObjectsFromArray:newItems];
+    [self setItems:oldItems];
+}
+
 - (void)setItems:(NSArray *)items
 {
     if (_items == items || [_items isEqualToArray:items])

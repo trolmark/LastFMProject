@@ -78,6 +78,7 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
+  - REMenu (1.10)
 
 DEPENDENCIES:
   - AFNetworking
@@ -88,6 +89,7 @@ DEPENDENCIES:
   - Overcoat (~> 2.0)
   - Overcoat/ReactiveCocoa (~> 2.0)
   - ReactiveCocoa
+  - REMenu (~> 1.10)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
@@ -97,5 +99,6 @@ SPEC CHECKSUMS:
   OHHTTPStubs: dbd1957d414659783e07b49c961940b7564c23d9
   Overcoat: a8d02b26f11e72ca10b4d8d786f6df83b3277b28
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
+  REMenu: 30dad195930adf6c5eeb8041e3257aa60bf9fa49
 
-COCOAPODS: 0.37.1
+COCOAPODS: 0.36.3

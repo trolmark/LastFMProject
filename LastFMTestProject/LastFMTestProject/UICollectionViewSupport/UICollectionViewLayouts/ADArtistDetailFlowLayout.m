@@ -17,7 +17,7 @@
     self.itemSize = CGSizeMake(145, 80);
     self.minimumInteritemSpacing = 10;
     self.minimumLineSpacing = 10;
-    self.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    self.sectionInset = UIEdgeInsetsMake(10, 5, 10, 5);
     
     return self;
 }

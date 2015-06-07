@@ -33,7 +33,7 @@
 {
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.imageView];
-    [self.imageView alignTop:@"10" leading:@"10" toView:self.contentView];
+    [self.imageView alignTop:@"10" leading:@"5" toView:self.contentView];
     [self.imageView constrainWidth:@"60" height:@"60"];
     self.imageView.contentMode = UIViewContentModeScaleToFill;
     self.imageView.layer.borderWidth = 0.5f;
@@ -42,11 +42,15 @@
     self.albumLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.albumLabel];
     [self.albumLabel alignTop:@"10" leading:@"70" toView:self.imageView];
+    self.albumLabel.font = [UIFont fontWithName:kBaseFont size:13];
+    [self.albumLabel alignTrailingEdgeWithView:self.contentView predicate:nil];
     
     self.playCountLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.playCountLabel];
     [self.playCountLabel alignTopEdgeWithView:self.albumLabel predicate:@"20"];
     [self.playCountLabel alignLeadingEdgeWithView:self.imageView predicate:@"70"];
+    self.playCountLabel.font =[UIFont fontWithName:kBaseFont size:10];
+    [self.playCountLabel alignTrailingEdgeWithView:self.contentView predicate:nil];
 }
 
 

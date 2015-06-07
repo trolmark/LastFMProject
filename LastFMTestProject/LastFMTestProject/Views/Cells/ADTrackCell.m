@@ -32,6 +32,7 @@
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.titleLabel];
     [self.titleLabel alignToView:self.contentView];
+    self.titleLabel.font = [UIFont fontWithName:kBaseFont size:14];
 }
 
 - (void) configureWithData:(ADTrackViewModel *) data

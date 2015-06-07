@@ -13,11 +13,16 @@
 #import "ADCollectionViewDataSource.h"
 #import "ADViewModels.h"
 #import "ADArtistCell.h"
+#import "CountryItem.h"
+#import "Support.h"
+#include "REMenu.h"
+#import "ADNavMenuItem.h"
+#import "ADMenuItem.h"
 
 @interface ADArtistListViewController ()
 
-@property (nonatomic, strong) ADTimeline *feed;
-@property (nonatomic, strong) ADCollectionViewDataSource *dataSource;
+@property (nonatomic, strong) REMenu *dropdownMenu;
+@property (nonatomic, strong) ADNavMenuItem *topMenuItem;
 
 @end
 
@@ -25,26 +30,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.view.backgroundColor = [UIColor whiteColor];
+    self.collectionView.backgroundColor = [UIColor clearColor];
     
     [self setupDataSource];
-    [self setupCollectionView];
     [self setupTimeline];
+    [self setupTopMenu];
     
     [self.dataSource registerReusableViewsWithCollectionView:self.collectionView];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [self.view layoutIfNeeded];
-    [self updateView];
-}
-
-- (void) setupCollectionView
-{
-    self.collectionView.backgroundColor = [UIColor clearColor];
-    self.collectionView.delegate = self;
+    [self loadFeedForDefaultCountry];
 }
 
 - (void) setupDataSource
@@ -60,36 +55,68 @@
 
 - (void) setupTimeline
 {
-    ADCountryFeedItem *feedItem = [[ADCountryFeedItem alloc] initWithCountry:@"Spain"];
-    self.feed = [[ADTimeline alloc] initWithFeedItem:feedItem];
+    self.feed = [[ADTimeline alloc] init];
 }
 
-- (void)updateView
+- (void) setupTopMenu
 {
-    BOOL allDownloaded = self.feed.allDownloaded;
-    [self.collectionView reloadData];
-    if (!allDownloaded) {
-        [self checkContentSize];
-    }
-}
-
-- (void)checkContentSize
-{
-    CGFloat contentHeight = self.collectionView.contentSize.height;
-    CGFloat frameHeight = self.collectionView.frame.size.height;
-    if (contentHeight < frameHeight){
-        [self getNextItemSet];
-    }
-}
-
-- (void)getNextItemSet
-{
-    if (self.feed.allDownloaded) { return; };
+    self.topMenuItem = [ADNavMenuItem newMenuItem];
+    @weakify(self)
+    [self.topMenuItem addAction:^{
+        @strongify(self)
+        [self toggleDropDownMenu];
+    }];
+    self.navigationItem.titleView = self.topMenuItem;
     
-    [self.feed getNextPage:^(NSArray *items) {
-        [self.dataSource setItems:items];
-        [self.collectionView reloadData];
-    } failure:nil];
+    NSArray *menuItems = [[[self.countries.rac_sequence
+        map:^CountryItem *(NSString *value) {
+            return [[CountryItem alloc] initWithName:value];
+        }] map:^REMenuItem *(CountryItem *value) {
+            return [[ADMenuItem alloc] initWithTitle:value.name
+                                              action:^(REMenuItem *item) {
+            [self updateListWithCountryItem:value];
+        }];
+    }] array];
+    
+    self.dropdownMenu = [[REMenu alloc] initWithItems:menuItems];
+    self.dropdownMenu.separatorColor = [UIColor whiteColor];
+}
+
+- (NSArray *) countries {
+    return @[@"France",@"Greece",@"Argentina",@"Spain",@"Ukraine"];
+}
+
+- (void) loadFeedForDefaultCountry
+{
+    NSString *defaultCountry = [[self countries] firstObject];
+    CountryItem *defaultItem = [[CountryItem alloc] initWithName:defaultCountry];
+    [self updateListWithCountryItem:defaultItem];
+}
+
+- (void) updateListWithCountryItem:(CountryItem *) item
+{
+    [self.topMenuItem setTitle:item.name];
+    
+    // Update feed with new country
+    ADCountryFeedItem *feedItem = [[ADCountryFeedItem alloc] initWithCountry:item.name];
+    [self.feed updateFeedItem:feedItem];
+    
+    [self.dataSource resetContent];
+    [self.collectionView reloadData];
+    
+    // Scroll to top
+    [self.collectionView setContentOffset:CGPointMake(-self.collectionView.contentInset.left, -self.collectionView.contentInset.top)];
+    
+    [self loadNextFeedPage];
+}
+
+- (void) toggleDropDownMenu
+{
+    if (self.dropdownMenu.isOpen) {
+        return [self.dropdownMenu close];
+    }
+    
+    [self.dropdownMenu showFromNavigationController:self.navigationController];
 }
 
 #pragma mark - UICollectionViewProtocol
@@ -100,7 +127,5 @@
     ADArtistDetailViewController *detailController = [[ADArtistDetailViewController alloc] initWithArtistViewModel:viewModel];
     [self.navigationController pushViewController:detailController animated:YES];
 }
-
-
 
 @end

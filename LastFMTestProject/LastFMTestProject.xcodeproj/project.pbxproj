@@ -28,6 +28,11 @@
 		848533351B238A32001E6DA3 /* ADLayoutMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533311B238A32001E6DA3 /* ADLayoutMetrics.m */; };
 		848533361B238A32001E6DA3 /* ADSupplementaryLayoutMetrics.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533331B238A32001E6DA3 /* ADSupplementaryLayoutMetrics.m */; };
 		8485333A1B239976001E6DA3 /* ADAlbumCoverHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533391B239976001E6DA3 /* ADAlbumCoverHeaderView.m */; };
+		848533401B245B91001E6DA3 /* CountryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485333F1B245B91001E6DA3 /* CountryItem.m */; };
+		848533431B246CEF001E6DA3 /* ADNavMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533421B246CEF001E6DA3 /* ADNavMenuItem.m */; };
+		848533461B246EF6001E6DA3 /* ADFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533451B246EF6001E6DA3 /* ADFeedViewController.m */; };
+		848533491B247113001E6DA3 /* ADMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533481B247113001E6DA3 /* ADMenuItem.m */; };
+		8485334C1B2472F8001E6DA3 /* PCAngularActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485334B1B2472F8001E6DA3 /* PCAngularActivityIndicatorView.m */; };
 		A7E604CC1B20A3DF000095AB /* ADArtistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604CB1B20A3DF000095AB /* ADArtistCell.m */; };
 		A7E604CF1B20A3F7000095AB /* ADAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604CE1B20A3F7000095AB /* ADAlbumCell.m */; };
 		A7E604D21B20A403000095AB /* ADTrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604D11B20A403000095AB /* ADTrackCell.m */; };
@@ -101,6 +106,16 @@
 		848533371B238CCF001E6DA3 /* ADCollectionViewMetrics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADCollectionViewMetrics.h; sourceTree = "<group>"; };
 		848533381B239976001E6DA3 /* ADAlbumCoverHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAlbumCoverHeaderView.h; sourceTree = "<group>"; };
 		848533391B239976001E6DA3 /* ADAlbumCoverHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAlbumCoverHeaderView.m; sourceTree = "<group>"; };
+		8485333E1B245B91001E6DA3 /* CountryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryItem.h; sourceTree = "<group>"; };
+		8485333F1B245B91001E6DA3 /* CountryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryItem.m; sourceTree = "<group>"; };
+		848533411B246CEF001E6DA3 /* ADNavMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNavMenuItem.h; sourceTree = "<group>"; };
+		848533421B246CEF001E6DA3 /* ADNavMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNavMenuItem.m; sourceTree = "<group>"; };
+		848533441B246EF6001E6DA3 /* ADFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADFeedViewController.h; sourceTree = "<group>"; };
+		848533451B246EF6001E6DA3 /* ADFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADFeedViewController.m; sourceTree = "<group>"; };
+		848533471B247113001E6DA3 /* ADMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADMenuItem.h; sourceTree = "<group>"; };
+		848533481B247113001E6DA3 /* ADMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADMenuItem.m; sourceTree = "<group>"; };
+		8485334A1B2472F8001E6DA3 /* PCAngularActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCAngularActivityIndicatorView.h; sourceTree = "<group>"; };
+		8485334B1B2472F8001E6DA3 /* PCAngularActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCAngularActivityIndicatorView.m; sourceTree = "<group>"; };
 		93771067284C48A0C0179DE7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		988DA25D5CD9476392BE3886 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E604CA1B20A3DF000095AB /* ADArtistCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADArtistCell.h; sourceTree = "<group>"; };
@@ -246,6 +261,8 @@
 				848533081B1E47EA001E6DA3 /* ADArtistDetailViewController.m */,
 				8485330A1B1E4823001E6DA3 /* ADAlbumViewController.h */,
 				8485330B1B1E4823001E6DA3 /* ADAlbumViewController.m */,
+				848533441B246EF6001E6DA3 /* ADFeedViewController.h */,
+				848533451B246EF6001E6DA3 /* ADFeedViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -272,6 +289,12 @@
 				A7EAC4D61B1F29E1004B8A1F /* Cells */,
 				848533381B239976001E6DA3 /* ADAlbumCoverHeaderView.h */,
 				848533391B239976001E6DA3 /* ADAlbumCoverHeaderView.m */,
+				848533411B246CEF001E6DA3 /* ADNavMenuItem.h */,
+				848533421B246CEF001E6DA3 /* ADNavMenuItem.m */,
+				848533471B247113001E6DA3 /* ADMenuItem.h */,
+				848533481B247113001E6DA3 /* ADMenuItem.m */,
+				8485334A1B2472F8001E6DA3 /* PCAngularActivityIndicatorView.h */,
+				8485334B1B2472F8001E6DA3 /* PCAngularActivityIndicatorView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -321,6 +344,8 @@
 				A7EAC4BC1B1EF85F004B8A1F /* Support.h */,
 				848533061B1E4411001E6DA3 /* API */,
 				A7EAC4D71B1F2AE4004B8A1F /* Categories */,
+				8485333E1B245B91001E6DA3 /* CountryItem.h */,
+				8485333F1B245B91001E6DA3 /* CountryItem.m */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -582,9 +607,12 @@
 				A7E88DE91B21C1C500B9C9AD /* ADArtistDetailFlowLayout.m in Sources */,
 				A7EAC4D51B1F2009004B8A1F /* ADTrackViewModel.m in Sources */,
 				A7E604D21B20A403000095AB /* ADTrackCell.m in Sources */,
+				848533461B246EF6001E6DA3 /* ADFeedViewController.m in Sources */,
+				8485334C1B2472F8001E6DA3 /* PCAngularActivityIndicatorView.m in Sources */,
 				A7EAC4BF1B1EFD87004B8A1F /* ADArtist.m in Sources */,
 				A7EAC4C51B1EFDC7004B8A1F /* ADTrack.m in Sources */,
 				A7EAC4C21B1EFD92004B8A1F /* ADAlbum.m in Sources */,
+				848533491B247113001E6DA3 /* ADMenuItem.m in Sources */,
 				8485330C1B1E4823001E6DA3 /* ADAlbumViewController.m in Sources */,
 				848533271B2249AB001E6DA3 /* ADImageHelper.m in Sources */,
 				A7EAC4DC1B1F2B0D004B8A1F /* MTLModel+Dictionary.m in Sources */,
@@ -597,11 +625,13 @@
 				A7EAC4E21B1F4081004B8A1F /* ADFeedSubclasses.m in Sources */,
 				848533151B1E4C07001E6DA3 /* Constants.m in Sources */,
 				A7E88DE31B21BC0C00B9C9AD /* ADLastFMHelper.m in Sources */,
+				848533431B246CEF001E6DA3 /* ADNavMenuItem.m in Sources */,
 				848532DF1B1E42F5001E6DA3 /* AppDelegate.m in Sources */,
 				A7EAC4C91B1F0784004B8A1F /* ADTimeline.m in Sources */,
 				A7E604CC1B20A3DF000095AB /* ADArtistCell.m in Sources */,
 				A7E88DE61B21C1B500B9C9AD /* ADArtistListFlowLayout.m in Sources */,
 				848532DC1B1E42F5001E6DA3 /* main.m in Sources */,
+				848533401B245B91001E6DA3 /* CountryItem.m in Sources */,
 				A7EAC4D21B1F1FF9004B8A1F /* ADAlbumViewModel.m in Sources */,
 				848533361B238A32001E6DA3 /* ADSupplementaryLayoutMetrics.m in Sources */,
 				848533091B1E47EA001E6DA3 /* ADArtistDetailViewController.m in Sources */,
