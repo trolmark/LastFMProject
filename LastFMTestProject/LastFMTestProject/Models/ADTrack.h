@@ -12,7 +12,7 @@
 
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSNumber *duration;
-@property (nonatomic, copy, readonly) NSNumber *rank;
+@property (nonatomic, copy) NSNumber *rank;
 
 
 

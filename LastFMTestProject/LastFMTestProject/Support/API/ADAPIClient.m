@@ -99,7 +99,10 @@
         return [[[[items rac_sequence] filter:^BOOL(NSDictionary *value) {
             return [value isKindOfClass:[NSDictionary class]];
         }] map:^ADTrack *(NSDictionary *value) {
-                return [ADTrack modelWithJSON:value];
+            ADTrack *model = [ADTrack modelWithJSON:value];
+            // FIXTO : just to simplify
+            model.rank = value[@"@attr"][@"rank"];
+            return model;
         }] array];
     }];
 }
