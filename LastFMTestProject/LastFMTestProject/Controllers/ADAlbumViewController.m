@@ -100,9 +100,12 @@
     }];
 }
 
+#pragma mark UICollectionFlowLayoutDelegate
+
 - (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    return CGSizeMake(collectionView.frame.size.width, 150);
+    CGFloat spacing = 10;
+    return CGSizeMake(collectionView.frame.size.width, collectionView.frame.size.width - 2*spacing);
 }
 
 

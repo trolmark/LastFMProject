@@ -33,7 +33,7 @@
 {
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.imageView];
-    [self.imageView alignTop:@"10" leading:@"10" toView:self.contentView];
+    [self.imageView alignTop:@"10" leading:@"5" toView:self.contentView];
     [self.imageView constrainWidth:@"60" height:@"60"];
     self.imageView.contentMode = UIViewContentModeScaleToFill;
     self.imageView.layer.borderWidth = 0.5f;

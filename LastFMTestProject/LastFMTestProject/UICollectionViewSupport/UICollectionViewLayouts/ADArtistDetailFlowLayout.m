@@ -13,13 +13,22 @@
 
 -(instancetype)init {
     if (!(self = [super init])) return nil;
-    
-    self.itemSize = CGSizeMake(145, 80);
+
     self.minimumInteritemSpacing = 10;
     self.minimumLineSpacing = 10;
     self.sectionInset = UIEdgeInsetsMake(10, 5, 10, 5);
     
     return self;
+}
+
+
+- (void)prepareLayout {
+    [super prepareLayout];
+    self.itemSize = [self updatedItemSize];
+}
+
+- (CGSize) updatedItemSize {
+    return CGSizeMake(self.collectionView.bounds.size.width/2 - 2*10, 80);
 }
 
 @end

@@ -46,6 +46,7 @@
     self.coverImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     [self addSubview:self.coverImageView];
     [self.coverImageView alignToView:self];
+    self.coverImageView.contentMode = UIViewContentModeScaleToFill;
 }
 
 

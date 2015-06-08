@@ -18,7 +18,7 @@
 #include "REMenu.h"
 #import "ADNavMenuItem.h"
 #import "ADMenuItem.h"
-#import "PCAngularActivityIndicatorView.h"
+#import "ADArtistListFlowLayout.h"
 
 @interface ADArtistListViewController ()
 
@@ -128,5 +128,6 @@
     ADArtistDetailViewController *detailController = [[ADArtistDetailViewController alloc] initWithArtistViewModel:viewModel];
     [self.navigationController pushViewController:detailController animated:YES];
 }
+
 
 @end
