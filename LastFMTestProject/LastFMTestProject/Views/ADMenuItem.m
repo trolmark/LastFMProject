@@ -20,6 +20,7 @@
 
 - (void) configureItem {
     self.backgroundColor = [UIColor whiteColor];
+    self.highlightedBackgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
     self.font = [UIFont fontWithName:kBaseFont size:16];
 }
 

@@ -20,6 +20,7 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
+    self.collectionView.delaysContentTouches = NO;
     [self setupLoadingIndicator];
 }
 
@@ -81,6 +82,20 @@
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {
     [self checkContentSize];
+}
+
+#pragma UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell* cell = [collectionView cellForItemAtIndexPath:indexPath];
+    cell.contentView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    cell.contentView.backgroundColor = [UIColor whiteColor];
 }
 
 
