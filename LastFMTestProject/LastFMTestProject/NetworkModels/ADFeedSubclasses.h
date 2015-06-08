@@ -10,10 +10,15 @@
 #import "ADFeedNetworkProtocol.h"
 #import "ADModels.h"
 
-@interface ADCountryFeedItem : NSObject <ADFeedNetworkProtocol>
+@class ADAPIClient;
+@interface ADFeedItem : NSObject
+@property (nonatomic, strong, readonly) ADAPIClient *apiClient;
+@end
+
+@interface ADCountryFeedItem : ADFeedItem <ADFeedNetworkProtocol>
 - (instancetype)initWithCountry:(NSString *)country;
 @end
 
-@interface ADArtistFeedItem : NSObject <ADFeedNetworkProtocol>
+@interface ADArtistFeedItem : ADFeedItem <ADFeedNetworkProtocol>
 - (instancetype)initWithArtist:(ADArtist *)artist;
 @end

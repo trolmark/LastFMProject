@@ -12,6 +12,26 @@
 #import "ADModels.h"
 #import "ADViewModels.h"
 
+@interface ADFeedItem ()
+@property (nonatomic, strong) ADAPIClient *apiClient;
+@end
+
+@implementation ADFeedItem
+
+- (instancetype)init
+{
+    self = [super init];
+    if (!self) { return nil; }
+    
+    self.apiClient = [ADAPIClient newAPIClient];
+    return self;
+}
+
+@end
+
+
+////////////////////////////
+
 @interface ADCountryFeedItem ()
 
 @property (nonatomic, strong) NSString *country;
@@ -31,7 +51,7 @@
 
 - (void)performNetworkRequestAtPage:(NSInteger)page withSuccess:(ResponseBlock)success failure:(ErrorBlock)failure
 {
-    [[[ADAPIClient newAPIClient] fetchArtistListAtPage:page byCountry:_country] subscribeNext:^(NSArray *items) {
+    [[self.apiClient fetchArtistListAtPage:page byCountry:_country] subscribeNext:^(NSArray *items) {
         items = [[[items rac_sequence] map:^id(ADArtist *value) {
             return [[ADArtistViewModel alloc] initWithModel:value];
         }] array];
@@ -63,7 +83,7 @@
 
 - (void)performNetworkRequestAtPage:(NSInteger)page withSuccess:(ResponseBlock)success failure:(ErrorBlock)failure
 {
-    [[[ADAPIClient newAPIClient] fetchAlbumListAtPage:page forArtist:_artist] subscribeNext:^(NSArray *items) {
+    [[self.apiClient fetchAlbumListAtPage:page forArtist:_artist] subscribeNext:^(NSArray *items) {
         items = [[[items rac_sequence] map:^id(ADAlbum *value) {
             return [[ADAlbumViewModel alloc] initWithModel:value];
         }] array];
