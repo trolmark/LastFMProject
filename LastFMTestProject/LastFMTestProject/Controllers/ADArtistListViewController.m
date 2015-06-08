@@ -74,7 +74,8 @@
     NSArray *menuItems = [[[self.countries.rac_sequence
         map:^CountryItem *(NSString *value) {
             return [[CountryItem alloc] initWithName:value];
-        }] map:^REMenuItem *(CountryItem *value) {
+        }]
+        map:^REMenuItem *(CountryItem *value) {
             return [[ADMenuItem alloc] initWithTitle:value.name
                                               action:^(REMenuItem *item) {
             [self updateListWithCountryItem:value];

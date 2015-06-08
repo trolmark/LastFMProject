@@ -17,7 +17,6 @@
 		848533091B1E47EA001E6DA3 /* ADArtistDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533081B1E47EA001E6DA3 /* ADArtistDetailViewController.m */; };
 		8485330C1B1E4823001E6DA3 /* ADAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485330B1B1E4823001E6DA3 /* ADAlbumViewController.m */; };
 		8485330F1B1E49E2001E6DA3 /* ADAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485330E1B1E49E2001E6DA3 /* ADAPIClient.m */; };
-		848533121B1E4AAC001E6DA3 /* ADAPIClient+Stubs.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533111B1E4AAC001E6DA3 /* ADAPIClient+Stubs.m */; };
 		848533151B1E4C07001E6DA3 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533141B1E4C07001E6DA3 /* Constants.m */; };
 		848533181B1E4CCA001E6DA3 /* ADNetworkConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533171B1E4CCA001E6DA3 /* ADNetworkConstants.m */; };
 		8485331D1B1E4E20001E6DA3 /* ADBaseDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485331C1B1E4E20001E6DA3 /* ADBaseDataSource.m */; };
@@ -80,8 +79,6 @@
 		8485330B1B1E4823001E6DA3 /* ADAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAlbumViewController.m; sourceTree = "<group>"; };
 		8485330D1B1E49E2001E6DA3 /* ADAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAPIClient.h; sourceTree = "<group>"; };
 		8485330E1B1E49E2001E6DA3 /* ADAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAPIClient.m; sourceTree = "<group>"; };
-		848533101B1E4AAC001E6DA3 /* ADAPIClient+Stubs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ADAPIClient+Stubs.h"; sourceTree = "<group>"; };
-		848533111B1E4AAC001E6DA3 /* ADAPIClient+Stubs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ADAPIClient+Stubs.m"; sourceTree = "<group>"; };
 		848533131B1E4C07001E6DA3 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		848533141B1E4C07001E6DA3 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		848533161B1E4CCA001E6DA3 /* ADNetworkConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNetworkConstants.h; sourceTree = "<group>"; };
@@ -209,7 +206,6 @@
 			isa = PBXGroup;
 			children = (
 				8485332B1B23899A001E6DA3 /* UICollectionViewSupport */,
-				A7EAC4DE1B1F2B75004B8A1F /* Transitions */,
 				A7EAC4CA1B1F085C004B8A1F /* Protocols */,
 				848533051B1E43D7001E6DA3 /* Support */,
 				848533041B1E43AC001E6DA3 /* App */,
@@ -356,8 +352,6 @@
 				A7EAC4E31B1F5149004B8A1F /* Responses */,
 				8485330D1B1E49E2001E6DA3 /* ADAPIClient.h */,
 				8485330E1B1E49E2001E6DA3 /* ADAPIClient.m */,
-				848533101B1E4AAC001E6DA3 /* ADAPIClient+Stubs.h */,
-				848533111B1E4AAC001E6DA3 /* ADAPIClient+Stubs.m */,
 				848533161B1E4CCA001E6DA3 /* ADNetworkConstants.h */,
 				848533171B1E4CCA001E6DA3 /* ADNetworkConstants.m */,
 			);
@@ -444,13 +438,6 @@
 				A7EAC4DB1B1F2B0D004B8A1F /* MTLModel+JSON.m */,
 			);
 			path = Categories;
-			sourceTree = "<group>";
-		};
-		A7EAC4DE1B1F2B75004B8A1F /* Transitions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Transitions;
 			sourceTree = "<group>";
 		};
 		A7EAC4E31B1F5149004B8A1F /* Responses */ = {
@@ -637,7 +624,6 @@
 				848533091B1E47EA001E6DA3 /* ADArtistDetailViewController.m in Sources */,
 				A7EAC4DD1B1F2B0D004B8A1F /* MTLModel+JSON.m in Sources */,
 				8485333A1B239976001E6DA3 /* ADAlbumCoverHeaderView.m in Sources */,
-				848533121B1E4AAC001E6DA3 /* ADAPIClient+Stubs.m in Sources */,
 				848533351B238A32001E6DA3 /* ADLayoutMetrics.m in Sources */,
 				848533201B1E4EAD001E6DA3 /* ADCollectionViewDataSource.m in Sources */,
 			);

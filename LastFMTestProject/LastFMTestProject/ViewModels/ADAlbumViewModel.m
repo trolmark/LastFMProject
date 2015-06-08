@@ -51,14 +51,6 @@
      }];
 }
 
-- (void) updateModel:(ADAlbum *) newModel {
-    [self.model mergeValuesForKeysFromModel:newModel];
-}
-
-- (NSArray *) tracks {
-    return @[];
-}
-
 - (void) fetchAlbumInfoWithSuccess:(ResponseBlock)success failure:(ErrorBlock)failure
 {
     [[[ADAPIClient newAPIClient] fetchInfoForAlbum:self.model]

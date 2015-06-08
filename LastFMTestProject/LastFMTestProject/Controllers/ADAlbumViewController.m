@@ -109,6 +109,7 @@
         [self.loadingIndicator stopAnimating];
         [self updateViewWithItems:tracks];
     } failure:^(NSError *error) {
+        @strongify(self)
         [self.loadingIndicator stopAnimating];
         [TSMessage  showNotificationWithTitle:error.debugDescription
                                          type:TSMessageNotificationTypeError];

@@ -20,8 +20,6 @@
 @property (nonatomic, copy, readonly) NSString *playCountText;
 
 
-- (void) updateModel:(ADAlbum *) newModel;
-- (NSArray *) tracks;
 - (void) fetchAlbumInfoWithSuccess:(ResponseBlock)success failure:(ErrorBlock)failure;
 
 @end

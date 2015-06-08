@@ -7,7 +7,6 @@
 //
 
 #import "ADAPIClient.h"
-#import "ADAPIClient+Stubs.h"
 #import "Support.h"
 #import "ADModels.h"
 #import "ADNetworkConstants.h"
@@ -31,10 +30,6 @@
     ADAPIClient *sharedClient = [[ADAPIClient alloc] initWithBaseURL:baseURL
                                                 sessionConfiguration:config];
     sharedClient.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    if (TEST_MODE) {
-        [ADAPIClient stubAllRequests];
-    }
 
     return sharedClient;
 }
