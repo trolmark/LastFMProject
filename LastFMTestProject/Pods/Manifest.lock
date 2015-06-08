@@ -21,6 +21,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - FLKAutoLayout (0.2.1)
+  - HexColors (2.2.1)
   - libextobjc (0.4.1):
     - libextobjc/EXTADT (= 0.4.1)
     - libextobjc/EXTConcreteProtocol (= 0.4.1)
@@ -79,6 +80,8 @@ PODS:
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
   - REMenu (1.10)
+  - TSMessages (0.9.12):
+    - HexColors
 
 DEPENDENCIES:
   - AFNetworking
@@ -90,15 +93,18 @@ DEPENDENCIES:
   - Overcoat/ReactiveCocoa (~> 2.0)
   - ReactiveCocoa
   - REMenu (~> 1.10)
+  - TSMessages
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   FLKAutoLayout: 9db6b30c2008d230da608e62c607b11c23b942e6
+  HexColors: abfd172e329dab59888614ccba6f216cec59289d
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
   OHHTTPStubs: dbd1957d414659783e07b49c961940b7564c23d9
   Overcoat: a8d02b26f11e72ca10b4d8d786f6df83b3277b28
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   REMenu: 30dad195930adf6c5eeb8041e3257aa60bf9fa49
+  TSMessages: 2a52642128d7ab15b46930c810b9c9403a2b58f3
 
 COCOAPODS: 0.36.3

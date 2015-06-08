@@ -61,6 +61,7 @@
 
 - (void) setupTopMenu
 {
+    // Create menu button on navigation bar
     self.topMenuItem = [ADNavMenuItem newMenuItem];
     @weakify(self)
     [self.topMenuItem addAction:^{
@@ -69,6 +70,7 @@
     }];
     self.navigationItem.titleView = self.topMenuItem;
     
+    // Setup drop down menu
     NSArray *menuItems = [[[self.countries.rac_sequence
         map:^CountryItem *(NSString *value) {
             return [[CountryItem alloc] initWithName:value];
@@ -102,6 +104,7 @@
     ADCountryFeedItem *feedItem = [[ADCountryFeedItem alloc] initWithCountry:item.name];
     [self.feed updateFeedItem:feedItem];
     
+    // Remove old content
     [self.dataSource resetContent];
     [self.collectionView reloadData];
     

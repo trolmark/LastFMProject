@@ -14,6 +14,7 @@
 #import <libextobjc/extobjc.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "UIView+FLKAutoLayout.h"
+#import <TSMessage.h>
 
 
 #endif

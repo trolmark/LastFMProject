@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-HexColors.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Mantle.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -39,6 +44,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-TSMessages.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-libextobjc.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,47 +62,57 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2A053D4743A37BE89FD3BEBF</key>
+		<key>15FC37B2BBB039F2444DFCF1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>75583CD874CDE6474E08D315</key>
+		<key>20E051323AC25C0F9BBE762E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>806BA004322DCF7F40BAADDB</key>
+		<key>566658C88E266FA1BFDF7B8C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9F80FCFD7CC38C33E3949269</key>
+		<key>681293EFC2C28EA18FFB687C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AC6EDDD4A27CBC139D8EB809</key>
+		<key>8530FF025FF7639E0B5AEB3D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AD307F51A71F66BB3CDAE33B</key>
+		<key>8E4AFC197E92E1B2B9C19CBA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CE5F85DFE68CB7BE55CAD691</key>
+		<key>A0613686E3503FB604902152</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D8E8A6FE213E25E2BE98A213</key>
+		<key>B15B0FC92A8B5CD04D5271AE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E83B7B728D7D4FEE81A8E395</key>
+		<key>C84A98BE16E621123D5A2F4C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DCD82D2F0A5C54A9BB62C2DE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EBC39D9C83F70C22AFDB4519</key>
 		<dict>
 			<key>primary</key>
 			<true/>

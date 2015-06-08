@@ -27,7 +27,6 @@
     [super viewWillAppear:animated];
     [self.loadingIndicator layoutIfNeeded];
     
-    
     [RACObserve(self.feed, downloadLock) subscribeNext:^(NSNumber *loading) {
         [loading boolValue] ? [self.loadingIndicator startAnimating] : [self.loadingIndicator stopAnimating];
     }];
@@ -64,9 +63,14 @@
 {
     if (self.feed.allDownloaded) { return; };
     
+    @weakify(self)
     [self.feed getNextPage:^(NSArray *items) {
+        @strongify(self)
         [self updateViewWithItems:items];
-    } failure:nil];
+    } failure:^(NSError *error) {
+        [TSMessage  showNotificationWithTitle:error.debugDescription
+                                         type:TSMessageNotificationTypeError];
+    }];
 }
 
 - (void) updateViewWithItems:(NSArray *) items

@@ -17,11 +17,13 @@
 #import "Support.h"
 #import "ADCollectionViewMetrics.h"
 #import "ADAlbumCoverHeaderView.h"
+#import "PCAngularActivityIndicatorView.h"
 
 @interface ADAlbumViewController ()
 
 @property (nonatomic, strong) ADAlbumViewModel *viewModel;
 @property (nonatomic, strong) ADCollectionViewDataSource *dataSource;
+@property (nonatomic, strong) PCAngularActivityIndicatorView *loadingIndicator;
 
 @end
 
@@ -50,10 +52,20 @@
     self.collectionView.backgroundColor = [UIColor whiteColor];
 
     [self setupDataSource];
+    [self setupLoadingIndicator];
     [self.dataSource registerReusableViewsWithCollectionView:self.collectionView];
     
     [self fetchData];
 }
+
+- (void) setupLoadingIndicator
+{
+    self.loadingIndicator = [[PCAngularActivityIndicatorView alloc] initWithActivityIndicatorStyle:PCAngularActivityIndicatorViewStyleLarge];
+    self.loadingIndicator.color = [UIColor lightGrayColor];
+    [self.view addSubview:self.loadingIndicator];
+    self.loadingIndicator.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
+}
+
 
 - (void) setupDataSource
 {
@@ -90,14 +102,23 @@
 
 - (void) fetchData
 {
+    [self.loadingIndicator startAnimating];
     @weakify(self)
     [self.viewModel fetchAlbumInfoWithSuccess:^(NSArray *tracks) {
         @strongify(self)
-        [self.dataSource setItems:tracks];
-        [self.collectionView reloadData];
+        [self.loadingIndicator stopAnimating];
+        [self updateViewWithItems:tracks];
     } failure:^(NSError *error) {
-        
+        [self.loadingIndicator stopAnimating];
+        [TSMessage  showNotificationWithTitle:error.debugDescription
+                                         type:TSMessageNotificationTypeError];
     }];
+}
+
+- (void) updateViewWithItems:(NSArray *) items
+{
+    [self.dataSource addItems:items];
+    [self.collectionView reloadData];
 }
 
 #pragma mark UICollectionFlowLayoutDelegate
