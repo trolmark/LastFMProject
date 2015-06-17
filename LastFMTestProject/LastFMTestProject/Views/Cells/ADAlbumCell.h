@@ -11,4 +11,6 @@
 
 @interface ADAlbumCell : UICollectionViewCell <ADDataViewProtocol>
 
+@property (nonatomic,strong,readonly) UIImageView *imageView;
+
 @end

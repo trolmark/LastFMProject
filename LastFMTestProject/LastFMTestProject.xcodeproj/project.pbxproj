@@ -32,6 +32,9 @@
 		848533461B246EF6001E6DA3 /* ADFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533451B246EF6001E6DA3 /* ADFeedViewController.m */; };
 		848533491B247113001E6DA3 /* ADMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533481B247113001E6DA3 /* ADMenuItem.m */; };
 		8485334C1B2472F8001E6DA3 /* PCAngularActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485334B1B2472F8001E6DA3 /* PCAngularActivityIndicatorView.m */; };
+		848533591B3201AD001E6DA3 /* ADNavigationTransitionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533581B3201AD001E6DA3 /* ADNavigationTransitionHelper.m */; };
+		8485335C1B32033B001E6DA3 /* ADPushTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485335B1B32033B001E6DA3 /* ADPushTransition.m */; };
+		8485335F1B32034A001E6DA3 /* ADPopTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485335E1B32034A001E6DA3 /* ADPopTransition.m */; };
 		A7E604CC1B20A3DF000095AB /* ADArtistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604CB1B20A3DF000095AB /* ADArtistCell.m */; };
 		A7E604CF1B20A3F7000095AB /* ADAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604CE1B20A3F7000095AB /* ADAlbumCell.m */; };
 		A7E604D21B20A403000095AB /* ADTrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604D11B20A403000095AB /* ADTrackCell.m */; };
@@ -113,6 +116,13 @@
 		848533481B247113001E6DA3 /* ADMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADMenuItem.m; sourceTree = "<group>"; };
 		8485334A1B2472F8001E6DA3 /* PCAngularActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCAngularActivityIndicatorView.h; sourceTree = "<group>"; };
 		8485334B1B2472F8001E6DA3 /* PCAngularActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCAngularActivityIndicatorView.m; sourceTree = "<group>"; };
+		848533571B3201AD001E6DA3 /* ADNavigationTransitionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNavigationTransitionHelper.h; sourceTree = "<group>"; };
+		848533581B3201AD001E6DA3 /* ADNavigationTransitionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNavigationTransitionHelper.m; sourceTree = "<group>"; };
+		8485335A1B32033B001E6DA3 /* ADPushTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPushTransition.h; sourceTree = "<group>"; };
+		8485335B1B32033B001E6DA3 /* ADPushTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPushTransition.m; sourceTree = "<group>"; };
+		8485335D1B32034A001E6DA3 /* ADPopTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADPopTransition.h; sourceTree = "<group>"; };
+		8485335E1B32034A001E6DA3 /* ADPopTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADPopTransition.m; sourceTree = "<group>"; };
+		848533601B320904001E6DA3 /* ADTransitionProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTransitionProtocol.h; sourceTree = "<group>"; };
 		93771067284C48A0C0179DE7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		988DA25D5CD9476392BE3886 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E604CA1B20A3DF000095AB /* ADArtistCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADArtistCell.h; sourceTree = "<group>"; };
@@ -205,6 +215,7 @@
 		848532D81B1E42F5001E6DA3 /* LastFMTestProject */ = {
 			isa = PBXGroup;
 			children = (
+				848533561B3200BE001E6DA3 /* Transition */,
 				8485332B1B23899A001E6DA3 /* UICollectionViewSupport */,
 				A7EAC4CA1B1F085C004B8A1F /* Protocols */,
 				848533051B1E43D7001E6DA3 /* Support */,
@@ -381,6 +392,20 @@
 			path = LayoutMetrics;
 			sourceTree = "<group>";
 		};
+		848533561B3200BE001E6DA3 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				848533571B3201AD001E6DA3 /* ADNavigationTransitionHelper.h */,
+				848533581B3201AD001E6DA3 /* ADNavigationTransitionHelper.m */,
+				8485335A1B32033B001E6DA3 /* ADPushTransition.h */,
+				8485335B1B32033B001E6DA3 /* ADPushTransition.m */,
+				8485335D1B32034A001E6DA3 /* ADPopTransition.h */,
+				8485335E1B32034A001E6DA3 /* ADPopTransition.m */,
+			);
+			name = Transition;
+			path = Transitions;
+			sourceTree = "<group>";
+		};
 		A7E604C91B20A0DA000095AB /* CollectionViewLayouts */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +437,7 @@
 				A7EAC4CB1B1F0A4D004B8A1F /* ADDataViewProtocol.h */,
 				A7EAC4CC1B1F0A4D004B8A1F /* ADViewModelProtocol.h */,
 				A7EAC4DF1B1F3B69004B8A1F /* ADFeedNetworkProtocol.h */,
+				848533601B320904001E6DA3 /* ADTransitionProtocol.h */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -592,6 +618,7 @@
 				848533341B238A32001E6DA3 /* ADCellLayoutMetrics.m in Sources */,
 				8485331D1B1E4E20001E6DA3 /* ADBaseDataSource.m in Sources */,
 				A7E88DE91B21C1C500B9C9AD /* ADArtistDetailFlowLayout.m in Sources */,
+				8485335C1B32033B001E6DA3 /* ADPushTransition.m in Sources */,
 				A7EAC4D51B1F2009004B8A1F /* ADTrackViewModel.m in Sources */,
 				A7E604D21B20A403000095AB /* ADTrackCell.m in Sources */,
 				848533461B246EF6001E6DA3 /* ADFeedViewController.m in Sources */,
@@ -615,6 +642,7 @@
 				848533431B246CEF001E6DA3 /* ADNavMenuItem.m in Sources */,
 				848532DF1B1E42F5001E6DA3 /* AppDelegate.m in Sources */,
 				A7EAC4C91B1F0784004B8A1F /* ADTimeline.m in Sources */,
+				8485335F1B32034A001E6DA3 /* ADPopTransition.m in Sources */,
 				A7E604CC1B20A3DF000095AB /* ADArtistCell.m in Sources */,
 				A7E88DE61B21C1B500B9C9AD /* ADArtistListFlowLayout.m in Sources */,
 				848532DC1B1E42F5001E6DA3 /* main.m in Sources */,
@@ -624,6 +652,7 @@
 				848533091B1E47EA001E6DA3 /* ADArtistDetailViewController.m in Sources */,
 				A7EAC4DD1B1F2B0D004B8A1F /* MTLModel+JSON.m in Sources */,
 				8485333A1B239976001E6DA3 /* ADAlbumCoverHeaderView.m in Sources */,
+				848533591B3201AD001E6DA3 /* ADNavigationTransitionHelper.m in Sources */,
 				848533351B238A32001E6DA3 /* ADLayoutMetrics.m in Sources */,
 				848533201B1E4EAD001E6DA3 /* ADCollectionViewDataSource.m in Sources */,
 			);

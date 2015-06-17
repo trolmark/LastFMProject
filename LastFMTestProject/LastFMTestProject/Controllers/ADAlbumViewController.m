@@ -18,12 +18,15 @@
 #import "ADCollectionViewMetrics.h"
 #import "ADAlbumCoverHeaderView.h"
 #import "PCAngularActivityIndicatorView.h"
+#import "ADImageHelper.h"
+#import "ADTransitionProtocol.h"
 
-@interface ADAlbumViewController ()
+@interface ADAlbumViewController ()<ADTransitionProtocol>
 
 @property (nonatomic, strong) ADAlbumViewModel *viewModel;
 @property (nonatomic, strong) ADCollectionViewDataSource *dataSource;
 @property (nonatomic, strong) PCAngularActivityIndicatorView *loadingIndicator;
+@property (nonatomic, strong) UIImageView *headerView;
 
 @end
 
@@ -51,11 +54,17 @@
     self.title = self.viewModel.name;
     self.collectionView.backgroundColor = [UIColor whiteColor];
 
+    [self setupHeaderView];
     [self setupDataSource];
     [self setupLoadingIndicator];
     [self.dataSource registerReusableViewsWithCollectionView:self.collectionView];
     
     [self fetchData];
+    
+    UIEdgeInsets insets = self.collectionView.contentInset;
+    insets.top = 20 + 300;
+    self.collectionView.contentInset = insets;
+    
 }
 
 - (void) setupLoadingIndicator
@@ -66,36 +75,34 @@
     self.loadingIndicator.center = CGPointMake(CGRectGetMidX(self.view.bounds), CGRectGetMidY(self.view.bounds));
 }
 
+- (void) setupHeaderView
+{
+    self.headerView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [self.view addSubview:self.headerView];
+    [self.headerView alignLeading:@"0" trailing:@"0" toView:self.view];
+    [self.headerView constrainTopSpaceToView:(UIView *)self.topLayoutGuide predicate:@"0"];
+    [self.headerView constrainHeight:@"300"];
+    
+    @weakify(self)
+    [[ADImageHelper imageData:self.viewModel.largeImageURL]
+     subscribeNext:^(NSData *x) {
+         @strongify(self)
+         UIImage *coverImage = [UIImage imageWithData:x];
+         self.headerView.image = coverImage;
+     }];
+}
+
 
 - (void) setupDataSource
 {
-    ADCellLayoutMetrics *cellMetrics = [[ADCellLayoutMetrics alloc]
-                                            initWithClass:[ADTrackCell class]
-                                            cellIdentifier:NSStringFromClass([ADTrackCell class])
-                                            useNib:NO];
-    
-    ADSupplementaryLayoutMetrics *headerMetrics = [[ADSupplementaryLayoutMetrics alloc]
-                                                        initWithClass:[ADAlbumCoverHeaderView class]
-                                                        identifier:NSStringFromClass([ADAlbumCoverHeaderView class])
-                                                        useNib:NO];
-    
-    ADLayoutMetrics *layoutMetrics = [[ADLayoutMetrics alloc] init];
-    layoutMetrics.cellMetrics = @[cellMetrics];
-    layoutMetrics.headers = @[headerMetrics];
-    
     self.dataSource = [[ADCollectionViewDataSource alloc]
-                            initWithLayoutMetrics:layoutMetrics
-                            configureCellBlock:^(ADTrackCell *cell, ADTrackViewModel *item) {
-                                [cell configureWithData:item];
-                            }];
-    
-    @weakify(self)
-    self.dataSource.configureSupplementaryBlock = ^(ADAlbumCoverHeaderView *supplementary, NSString *kind, NSIndexPath *path) {
-        @strongify(self)
-        if (UICollectionElementKindSectionHeader == kind) {
-            [supplementary configureWithData:self.viewModel];
-        }
-    };
+                        initWithItems:@[]
+                       cellIdentifier:NSStringFromClass([ADTrackCell class])
+                       configureCellBlock:^(ADTrackCell *cell, ADTrackViewModel *item) {
+            [cell configureWithData:item];
+        
+    }];
+
     
     self.collectionView.dataSource = self.dataSource;
 }
@@ -122,13 +129,18 @@
     [self.collectionView reloadData];
 }
 
-#pragma mark UICollectionFlowLayoutDelegate
+#pragma mark ADTransitionProtocol 
 
-- (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
-{
-    CGFloat spacing = 10;
-    return CGSizeMake(collectionView.frame.size.width, collectionView.frame.size.width - 2*spacing);
+- (UIView *) snapShotForTransition {
+    return self.headerView;
 }
+
+- (CGRect) transitionDestinationFrame
+{
+    return CGRectMake(0, 64, self.view.bounds.size.width, 300);
+}
+
+
 
 
 @end
