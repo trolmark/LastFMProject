@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) ADTrack *model;
 @property (nonatomic, copy) NSAttributedString *attributedTitle;
+@property (nonatomic, copy) NSString *durationText;
 
 @end
 
@@ -34,23 +35,23 @@
 
 - (void) setupPresentationLogic
 {
+    RAC(self, durationText) = [RACObserve(self.model, duration) map:^id(id value) {
+        return [self formatTime:value];
+    }];
+
+    
     RAC(self, attributedTitle) = [RACSignal
-                                    combineLatest:@[RACObserve(self.model,rank),RACObserve(self.model, name), RACObserve(self.model, duration) ]
-                                    reduce:^(NSNumber *rank, NSString *name, NSNumber *duration) {
-                                        NSString *title = [NSString stringWithFormat:@"%d. %@ %@",[rank intValue],name,[self formatTime:duration]];
+                                    combineLatest:@[RACObserve(self.model,rank),RACObserve(self.model, name) ]
+                                    reduce:^(NSNumber *rank, NSString *name) {
+                                        NSString *title = [NSString stringWithFormat:@"%d. %@",[rank intValue],name];
                                         NSMutableAttributedString *value = [[NSMutableAttributedString alloc] initWithString:title ?: @""];
                                         NSString *rankStr = [NSString stringWithFormat:@"%d",[rank intValue]];
-                                        NSString *durationStr = [self formatTime:duration];
                                         
                                         [value addAttribute:NSFontAttributeName
                                                       value:[UIFont fontWithName:kBaseFont size:11.0]
                                                       range:[title rangeOfString:rankStr]];
                                         
-                                        [value addAttribute:NSFontAttributeName
-                                                      value:[UIFont fontWithName:kBaseFont size:11.0]
-                                                      range:[title rangeOfString:durationStr]];
-                                        
-                                        [value addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:[title rangeOfString:durationStr]];
+                                        [value addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:[title rangeOfString:rankStr]];
                                         
                                         return value;
                                     }];

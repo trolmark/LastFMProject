@@ -13,6 +13,7 @@
 @interface ADTrackCell()
 
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *durationLabel;
 
 @end
 
@@ -28,18 +29,30 @@
     return self;
 }
 
-- (void) setupLayout {
+- (void) setupLayout
+{
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.titleLabel];
-    [self.titleLabel alignToView:self.contentView];
-    [self.titleLabel alignLeadingEdgeWithView:self.contentView predicate:@"10"];
-    self.titleLabel.font = [UIFont fontWithName:kBaseFont size:14];
+    self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.titleLabel.numberOfLines = 0;
+    [self.titleLabel constrainHeightToView:self.contentView predicate:nil];
+     [self.titleLabel constrainWidthToView:self.contentView predicate:@"*.6"];
+    [self.titleLabel alignTop:@"" leading:@"10" toView:self.contentView];
+    self.titleLabel.font = [UIFont fontWithName:kBaseFont size:13];
+    
+    self.durationLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    [self.contentView addSubview:self.durationLabel];
+    [self.durationLabel alignTrailingEdgeWithView:self.contentView predicate:nil];
+    [self.durationLabel alignCenterYWithView:self.contentView predicate:@""];
+    [self.durationLabel constrainWidth:@"50"];
+    self.durationLabel.font = [UIFont fontWithName:kBaseFont size:14];
+    self.durationLabel.textColor = [UIColor lightGrayColor];
 }
 
 - (void) configureWithData:(ADTrackViewModel *) data
 {
-    //self.titleLabel.text = data.title;
     self.titleLabel.attributedText = data.attributedTitle;
+    self.durationLabel.text = data.durationText;
 }
 
 @end
