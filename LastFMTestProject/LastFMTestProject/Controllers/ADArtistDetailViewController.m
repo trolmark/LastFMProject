@@ -24,6 +24,7 @@
 @property (nonatomic, strong) ADArtistViewModel *viewModel;
 @property (nonatomic, strong) ADAlbumViewModel *selectedModel;
 @property (nonatomic, strong) ADCoverHeaderView *headerView;
+@property (nonatomic, strong) UIVisualEffectView *blurredView;
 
 @end
 
@@ -52,6 +53,7 @@
     self.collectionView.backgroundColor = [UIColor clearColor];
     
     [self setupHeaderView];
+    [self setupBlurView];
     [self setupDataSource];
     [self setupTimeline];
     [self.dataSource registerReusableViewsWithCollectionView:self.collectionView];
@@ -59,7 +61,7 @@
     [self.view layoutIfNeeded];
     
     UIEdgeInsets insets = self.collectionView.contentInset;
-    insets.top = 20 + self.headerView.frame.size.height;
+    insets.top = self.headerView.frame.size.height;
     self.collectionView.contentInset = insets;
 }
 
@@ -74,6 +76,16 @@
     [self.view insertSubview:self.headerView belowSubview:self.collectionView];
 }
 
+- (void) setupBlurView
+{
+    UIBlurEffect * effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    self.blurredView =
+    [[UIVisualEffectView alloc] initWithEffect:effect];
+    [self.view addSubview:self.blurredView];
+    [self.blurredView alignToView:self.view];
+    [self.view insertSubview:self.blurredView aboveSubview:self.headerView];
+    self.blurredView.hidden = YES;
+}
 
 - (void) setupDataSource
 {
@@ -100,6 +112,11 @@
     self.selectedModel = viewModel;
     ADAlbumViewController *detailController = [[ADAlbumViewController alloc] initWithAlbumViewModel:viewModel];
     [self.navigationController pushViewController:detailController animated:YES];
+}
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+    [super scrollViewDidScroll:scrollView];
+    self.blurredView.hidden  = !(scrollView.contentOffset.y > -scrollView.contentInset.top);
 }
 
 #pragma mark ADTransitionProtocol

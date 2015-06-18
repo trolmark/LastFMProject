@@ -15,12 +15,14 @@
 
 @property (nonatomic, strong) UIImageView *coverImageView;
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UIVisualEffectView *blurredTitleBack;
 
 @end
 
 @implementation ADCoverHeaderView
 
-- (instancetype) initWithFrame:(CGRect)frame {
+- (instancetype) initWithFrame:(CGRect)frame
+{
     self = [super initWithFrame:frame];
     if (!self) return nil;
     
@@ -33,22 +35,27 @@
     
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [self addSubview:self.titleLabel];
-    [self.titleLabel alignTop:@"150" bottom:@"100" toView:self.coverImageView];
-    [self.titleLabel constrainWidthToView:self predicate:nil];
+    [self.titleLabel alignBottomEdgeWithView:self predicate:nil];
+    [self.titleLabel constrainHeight:@"50"];
+    [self.titleLabel constrainWidthToView:self predicate:@""];
     self.titleLabel.font = [UIFont fontWithName:kBaseFont size:20];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.textColor = [UIColor whiteColor];
     [self insertSubview:self.titleLabel aboveSubview:self.coverImageView];
+    
+    UIBlurEffect * effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    self.blurredTitleBack =
+    [[UIVisualEffectView alloc] initWithEffect:effect];
+    [self addSubview:self.blurredTitleBack];
+    [self.blurredTitleBack alignToView:self.titleLabel];
+    [self insertSubview:self.blurredTitleBack belowSubview:self.titleLabel];
     
     return self;
 }
 
 - (void) configureWithData:(ADAlbumViewModel *)data
 {
-    RACSignal *prepareForReuseSignal = [self rac_signalForSelector:@selector(prepareForReuse)];
-    
-    [[[ADImageHelper imageData:data.largeImageURL]
-        takeUntil:prepareForReuseSignal ]
+    [[ADImageHelper imageData:data.largeImageURL]
         subscribeNext:^(NSData *x) {
             UIImage *coverImage = [UIImage imageWithData:x];
             self.coverImageView.image = coverImage;

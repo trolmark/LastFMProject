@@ -14,7 +14,7 @@
 -(instancetype)init {
     if (!(self = [super init])) return nil;
 
-    self.minimumInteritemSpacing = 10;
+    self.minimumInteritemSpacing = 5;
     self.minimumLineSpacing = 10;
     self.sectionInset = UIEdgeInsetsMake(10, 5, 10, 5);
     
@@ -28,7 +28,7 @@
 }
 
 - (CGSize) updatedItemSize {
-    return CGSizeMake(self.collectionView.bounds.size.width - 2*10, 80);
+    return CGSizeMake(self.collectionView.bounds.size.width - 2*self.minimumLineSpacing, 80);
 }
 
 @end

@@ -63,8 +63,9 @@
     [self fetchData];
     
     [self.view layoutIfNeeded];
+    
     UIEdgeInsets insets = self.collectionView.contentInset;
-    insets.top = 20 + self.headerView.frame.size.height;
+    insets.top = self.headerView.frame.size.height;
     self.collectionView.contentInset = insets;
 }
 
