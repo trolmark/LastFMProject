@@ -13,6 +13,7 @@
 @interface ADTrackViewModel()
 
 @property (nonatomic, strong) ADTrack *model;
+@property (nonatomic, copy) NSAttributedString *attributedTitle;
 
 @end
 
@@ -33,11 +34,30 @@
 
 - (void) setupPresentationLogic
 {
-    RAC(self, title) = [RACSignal
-                            combineLatest:@[RACObserve(self.model,rank),RACObserve(self.model, name), RACObserve(self.model, duration) ]
-                            reduce:^(NSNumber *rank, NSString *name, NSNumber *duration) {
-                                return [NSString stringWithFormat:@"%d. %@ %@",[rank intValue],name,[self formatTime:duration]];
-                            }];
+    RAC(self, attributedTitle) = [RACSignal
+                                    combineLatest:@[RACObserve(self.model,rank),RACObserve(self.model, name), RACObserve(self.model, duration) ]
+                                    reduce:^(NSNumber *rank, NSString *name, NSNumber *duration) {
+                                        NSString *title = [NSString stringWithFormat:@"%d. %@ %@",[rank intValue],name,[self formatTime:duration]];
+                                        NSMutableAttributedString *value = [[NSMutableAttributedString alloc] initWithString:title ?: @""];
+                                        NSString *rankStr = [NSString stringWithFormat:@"%d",[rank intValue]];
+                                        NSString *durationStr = [self formatTime:duration];
+                                        
+                                        [value addAttribute:NSFontAttributeName
+                                                      value:[UIFont fontWithName:kBaseFont size:11.0]
+                                                      range:[title rangeOfString:rankStr]];
+                                        
+                                        [value addAttribute:NSFontAttributeName
+                                                      value:[UIFont fontWithName:kBaseFont size:11.0]
+                                                      range:[title rangeOfString:durationStr]];
+                                        
+                                        [value addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:[title rangeOfString:durationStr]];
+                                        
+                                        return value;
+                                    }];
+                
+        
+    
+    
 }
 
 - (NSString *) formatTime:(NSNumber *)time

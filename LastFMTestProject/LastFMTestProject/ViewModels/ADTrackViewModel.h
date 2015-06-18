@@ -16,5 +16,6 @@
 @property (nonatomic, strong, readonly) ADTrack *model;
 @property (nonatomic, copy, readonly) NSString *rank;
 @property (nonatomic, copy, readonly) NSString *title;
+@property (nonatomic, copy, readonly) NSAttributedString *attributedTitle;
 
 @end
