@@ -14,5 +14,6 @@
 @property (nonatomic, copy, readonly) NSNumber *listenersCount;
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *imageThumbURL;
+@property (nonatomic, copy, readonly) NSString *largeImageURL;
 
 @end

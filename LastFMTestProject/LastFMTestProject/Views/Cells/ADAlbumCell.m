@@ -33,24 +33,33 @@
 {
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.imageView];
-    [self.imageView alignTop:@"10" leading:@"5" toView:self.contentView];
-    [self.imageView constrainWidth:@"60" height:@"60"];
-    self.imageView.contentMode = UIViewContentModeScaleToFill;
+    [self.imageView alignToView:self.contentView];
+    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.imageView.clipsToBounds = YES;
     self.imageView.layer.borderWidth = 0.5f;
     self.imageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     
+    UIView *coverView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self.contentView addSubview:coverView];
+    [self.contentView insertSubview:coverView aboveSubview:self.imageView];
+    [coverView alignToView:self.imageView];
+    coverView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+
     self.albumLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.albumLabel];
-    [self.albumLabel alignTop:@"10" leading:@"70" toView:self.imageView];
-    self.albumLabel.font = [UIFont fontWithName:kBaseFont size:13];
-    [self.albumLabel alignTrailingEdgeWithView:self.contentView predicate:nil];
+    self.albumLabel.textColor = [UIColor whiteColor];
+    self.albumLabel.textAlignment = NSTextAlignmentCenter;
+    [self.albumLabel alignCenterWithView:self.contentView];
+    [self.albumLabel constrainWidthToView:self.contentView predicate:@""];
+    self.albumLabel.font = [UIFont fontWithName:kBaseFont size:15];
     
     self.playCountLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.playCountLabel];
+    self.playCountLabel.textAlignment = NSTextAlignmentCenter;
     [self.playCountLabel alignTopEdgeWithView:self.albumLabel predicate:@"20"];
-    [self.playCountLabel alignLeadingEdgeWithView:self.imageView predicate:@"70"];
-    self.playCountLabel.font =[UIFont fontWithName:kBaseFont size:10];
-    [self.playCountLabel alignTrailingEdgeWithView:self.contentView predicate:nil];
+    [self.playCountLabel constrainWidthToView:self.albumLabel predicate:@""];
+    self.playCountLabel.font =[UIFont fontWithName:kBaseFont size:11];
+    self.playCountLabel.textColor = [UIColor whiteColor];
 }
 
 
@@ -65,5 +74,4 @@
         return [UIImage imageWithData:data];
     }] takeUntil:prepareForReuseSignal];
 }
-
 @end

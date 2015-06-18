@@ -28,7 +28,7 @@
 }
 
 - (CGSize) updatedItemSize {
-    return CGSizeMake(self.collectionView.bounds.size.width/2 - 2*10, 80);
+    return CGSizeMake(self.collectionView.bounds.size.width - 2*10, 80);
 }
 
 @end

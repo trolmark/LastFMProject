@@ -16,5 +16,6 @@
 @property (nonatomic, copy, readonly) NSString *name;
 @property (nonatomic, copy, readonly) NSString *listenersCountText;
 @property (nonatomic, copy, readonly) NSData *thumbnailData;
+@property (nonatomic, strong, readonly) NSURL *largeImageURL;
 
 @end

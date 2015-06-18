@@ -33,22 +33,29 @@
 {
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.imageView];
-    [self.imageView alignTop:@"10" leading:@"5" toView:self.contentView];
-    [self.imageView constrainWidth:@"60" height:@"60"];
+    [self.imageView alignCenterXWithView:self.contentView predicate:nil];
+    [self.imageView alignTopEdgeWithView:self.contentView predicate:nil];
+    [self.imageView constrainWidth:@"300" height:@"300"];
     self.imageView.contentMode = UIViewContentModeScaleToFill;
     self.imageView.layer.borderWidth = 0.5f;
     self.imageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.imageView.clipsToBounds = YES;
     
     self.artistLabel = [[UILabel alloc] initWithFrame:CGRectZero];
      [self.contentView addSubview:self.artistLabel];
-    [self.artistLabel alignTop:@"10" leading:@"70" toView:self.imageView];
+    [self.artistLabel alignTopEdgeWithView:self.imageView predicate:@"140"];
+    [self.artistLabel constrainWidthToView:self.contentView predicate:@""];
     self.artistLabel.font = [UIFont fontWithName:kBaseFont size:18];
+    self.artistLabel.textAlignment = NSTextAlignmentCenter;
+    self.artistLabel.textColor = [UIColor whiteColor];
     
     self.listenersCountLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.listenersCountLabel];
+    self.listenersCountLabel.textAlignment = NSTextAlignmentCenter;
     [self.listenersCountLabel alignTopEdgeWithView:self.artistLabel predicate:@"20"];
-    [self.listenersCountLabel alignLeadingEdgeWithView:self.imageView predicate:@"70"];
+    [self.listenersCountLabel constrainWidthToView:self.contentView predicate:@""];
     self.listenersCountLabel.font = [UIFont fontWithName:kBaseFont size:15];
+    self.listenersCountLabel.textColor = [UIColor whiteColor];
     
 }
 

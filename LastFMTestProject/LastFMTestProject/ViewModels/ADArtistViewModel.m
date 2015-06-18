@@ -40,7 +40,11 @@
         return [NSString stringWithFormat:@"%ld listeners",(long)value.integerValue];
     }];
     
-    [[ADImageHelper imageData:[NSURL URLWithString:self.model.imageThumbURL]]
+    RAC(self, largeImageURL) = [RACObserve(self.model, largeImageURL) map:^id(NSString *value) {
+        return [NSURL URLWithString:value];
+    }];
+    
+    [[ADImageHelper imageData:[NSURL URLWithString:self.model.largeImageURL]]
         subscribeNext:^(NSData *x) {
             self.thumbnailData = x;
     }];

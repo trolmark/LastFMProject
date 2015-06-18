@@ -16,17 +16,17 @@
 #import "ADImageHelper.h"
 #import "Support.h"
 #import "ADCollectionViewMetrics.h"
-#import "ADAlbumCoverHeaderView.h"
 #import "PCAngularActivityIndicatorView.h"
 #import "ADImageHelper.h"
 #import "ADTransitionProtocol.h"
+#import "ADCoverHeaderView.h"
 
 @interface ADAlbumViewController ()<ADTransitionProtocol>
 
 @property (nonatomic, strong) ADAlbumViewModel *viewModel;
 @property (nonatomic, strong) ADCollectionViewDataSource *dataSource;
 @property (nonatomic, strong) PCAngularActivityIndicatorView *loadingIndicator;
-@property (nonatomic, strong) UIImageView *headerView;
+@property (nonatomic, strong) ADCoverHeaderView *headerView;
 
 @end
 
@@ -52,7 +52,8 @@
     [super viewDidLoad];
     
     self.title = self.viewModel.name;
-    self.collectionView.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.collectionView.backgroundColor = [UIColor clearColor];
 
     [self setupHeaderView];
     [self setupDataSource];
@@ -61,10 +62,10 @@
     
     [self fetchData];
     
+    [self.view layoutIfNeeded];
     UIEdgeInsets insets = self.collectionView.contentInset;
-    insets.top = 20 + 300;
+    insets.top = 20 + self.headerView.frame.size.height;
     self.collectionView.contentInset = insets;
-    
 }
 
 - (void) setupLoadingIndicator
@@ -77,19 +78,14 @@
 
 - (void) setupHeaderView
 {
-    self.headerView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    self.headerView = [[ADCoverHeaderView alloc] initWithFrame:CGRectZero];
     [self.view addSubview:self.headerView];
     [self.headerView alignLeading:@"0" trailing:@"0" toView:self.view];
     [self.headerView constrainTopSpaceToView:(UIView *)self.topLayoutGuide predicate:@"0"];
     [self.headerView constrainHeight:@"300"];
+    [self.view insertSubview:self.headerView belowSubview:self.collectionView];
     
-    @weakify(self)
-    [[ADImageHelper imageData:self.viewModel.largeImageURL]
-     subscribeNext:^(NSData *x) {
-         @strongify(self)
-         UIImage *coverImage = [UIImage imageWithData:x];
-         self.headerView.image = coverImage;
-     }];
+    [self.headerView configureWithData:self.viewModel];
 }
 
 
@@ -131,13 +127,18 @@
 
 #pragma mark ADTransitionProtocol 
 
-- (UIView *) snapShotForTransition {
-    return self.headerView;
+- (UIView *) transitionFromViewReverse:(BOOL) reverse {
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:self.headerView.coverImageView.image];
+    imageView.contentMode = self.headerView.contentMode;
+    imageView.clipsToBounds = YES;
+    imageView.userInteractionEnabled = NO;
+    imageView.frame = [self.headerView convertRect:self.headerView.frame toView:self.collectionView.superview];
+    return imageView;
 }
 
-- (CGRect) transitionDestinationFrame
+- (CGRect) transitionToViewFrameReverse:(BOOL) reverse
 {
-    return CGRectMake(0, 64, self.view.bounds.size.width, 300);
+    return self.headerView.frame;
 }
 
 

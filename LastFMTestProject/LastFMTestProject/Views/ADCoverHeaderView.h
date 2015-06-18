@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ADDataViewProtocol.h"
 
-@interface ADAlbumCoverHeaderView : UICollectionReusableView <ADDataViewProtocol>
+@interface ADCoverHeaderView : UIView <ADDataViewProtocol>
+
+@property (nonatomic, strong,readonly) UIImageView *coverImageView;
 
 @end

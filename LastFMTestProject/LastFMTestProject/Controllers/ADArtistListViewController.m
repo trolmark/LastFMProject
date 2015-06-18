@@ -19,11 +19,17 @@
 #import "ADNavMenuItem.h"
 #import "ADMenuItem.h"
 #import "ADArtistListFlowLayout.h"
+#import "ADTransitionProtocol.h"
+#import "ADNavigationTransition.h"
+#import "ADNavigationTransitionHelper.h"
 
-@interface ADArtistListViewController ()
+@interface ADArtistListViewController () <ADTransitionProtocol>
 
 @property (nonatomic, strong) REMenu *dropdownMenu;
 @property (nonatomic, strong) ADNavMenuItem *topMenuItem;
+@property (nonatomic, strong) ADArtistViewModel *selectedModel;
+@property (nonatomic, strong) ADNavigationTransitionHelper *transitionHelper;
+
 
 @end
 
@@ -41,6 +47,9 @@
     
     [self.dataSource registerReusableViewsWithCollectionView:self.collectionView];
     [self loadFeedForDefaultCountry];
+    
+    self.transitionHelper = [[ADNavigationTransitionHelper alloc] initWithNavigationController:self.navigationController
+                                                                    panGestureRecognizerEnable:NO];
 }
 
 - (void) setupDataSource
@@ -129,8 +138,37 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ADArtistViewModel *viewModel = [self.dataSource itemAtIndexPath:indexPath];
+    self.selectedModel = viewModel;
     ADArtistDetailViewController *detailController = [[ADArtistDetailViewController alloc] initWithArtistViewModel:viewModel];
     [self.navigationController pushViewController:detailController animated:YES];
+}
+
+#pragma mark ADTransitionProtocol
+
+
+- (UIView *) transitionFromViewReverse:(BOOL) reverse
+{
+    ADArtistCell *cell = [self selectedCell];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:cell.imageView.image];
+    imageView.contentMode = cell.imageView.contentMode;
+    imageView.clipsToBounds = YES;
+    imageView.userInteractionEnabled = NO;
+    imageView.frame = [cell.imageView convertRect:cell.imageView.frame toView:self.view];
+    return imageView;
+}
+
+- (ADArtistCell *) selectedCell
+{
+    NSIndexPath *selectedIndexPath = [[self.dataSource indexPathsForItem:self.selectedModel] firstObject];
+    ADArtistCell *cell = (ADArtistCell *)[self.collectionView cellForItemAtIndexPath:selectedIndexPath];
+    return cell;
+}
+
+- (CGRect) transitionToViewFrameReverse:(BOOL) reverse
+{
+    ADArtistCell *cell = [self selectedCell];
+    CGRect cellFrameInSuperview = [cell.imageView convertRect:cell.imageView.frame toView:self.view];
+    return cellFrameInSuperview;
 }
 
 

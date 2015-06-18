@@ -11,7 +11,7 @@
 @class UIView;
 @protocol ADTransitionProtocol <NSObject>
 
-- (UIView *) snapShotForTransition;
-- (CGRect) transitionDestinationFrame;
+- (UIView *) transitionFromViewReverse:(BOOL) reverse;
+- (CGRect) transitionToViewFrameReverse:(BOOL) reverse;
 
 @end

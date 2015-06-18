@@ -7,13 +7,12 @@
 //
 
 #import "ADNavigationTransitionHelper.h"
-#import "ADPopTransition.h"
-#import "ADPushTransition.h"
+#import "ADNavigationTransition.h"
 
 @interface ADNavigationTransitionHelper()
 
-@property (nonatomic, strong) ADPushTransition *pushTransition;
-@property (nonatomic, strong) ADPushTransition *popTransition;
+@property (nonatomic, strong) ADNavigationTransition *pushTransition;
+@property (nonatomic, strong) ADNavigationTransition *popTransition;
 @property (nonatomic, weak) UINavigationController *navigationController;
 @property (nonatomic, strong) UIPercentDrivenInteractiveTransition *interactionController;
 @property (nonatomic, assign) BOOL panGestureRecognizerEnable;
@@ -24,16 +23,16 @@
 
 #pragma mark - Propertys
 
-- (ADPushTransition *)pushTransition {
+- (ADNavigationTransition *)pushTransition {
     if (!_pushTransition) {
-        _pushTransition = [[ADPushTransition alloc] init];
+        _pushTransition = [[ADNavigationTransition alloc] init];
     }
     return _pushTransition;
 }
 
-- (ADPushTransition *)popTransition {
+- (ADNavigationTransition *)popTransition {
     if (!_popTransition) {
-        _popTransition = [[ADPushTransition alloc] init];
+        _popTransition = [[ADNavigationTransition alloc] init];
         _popTransition.reverse = YES;
     }
     return _popTransition;
@@ -106,9 +105,9 @@
         return self.pushTransition;
     } else if (operation == UINavigationControllerOperationPop) {
         return self.popTransition;
-    } else {
-        return nil;
     }
+    
+    return nil;
 }
 
 #pragma mark - UIViewControllerInteractiveTransitioning

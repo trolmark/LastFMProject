@@ -12,6 +12,7 @@
 @interface ADArtist()
 
 @property (nonatomic, copy, readwrite) NSString *imageThumbURL;
+@property (nonatomic, copy, readwrite) NSString *largeImageURL;
 @property (nonatomic, copy, readwrite) NSDictionary *image;
 @end
 
@@ -37,6 +38,7 @@
     NSString *imageThumbURL, *imageURL;
     ADSetImageURLsForThumbAndImage(imageArray, &imageThumbURL, &imageURL);
     self.imageThumbURL = imageThumbURL;
+    self.largeImageURL = imageURL;
     
     return self;
 }

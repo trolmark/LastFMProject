@@ -11,4 +11,6 @@
 
 @interface ADArtistCell : UICollectionViewCell <ADDataViewProtocol>
 
+@property (nonatomic, strong, readonly) UIImageView *imageView;
+
 @end
