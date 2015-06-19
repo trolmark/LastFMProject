@@ -43,12 +43,12 @@
     RAC(self, attributedTitle) = [RACSignal
                                     combineLatest:@[RACObserve(self.model,rank),RACObserve(self.model, name) ]
                                     reduce:^(NSNumber *rank, NSString *name) {
-                                        NSString *title = [NSString stringWithFormat:@"%d. %@",[rank intValue],name];
+                                        NSString *title = [NSString stringWithFormat:@"%d  %@",[rank intValue],name];
                                         NSMutableAttributedString *value = [[NSMutableAttributedString alloc] initWithString:title ?: @""];
                                         NSString *rankStr = [NSString stringWithFormat:@"%d",[rank intValue]];
                                         
                                         [value addAttribute:NSFontAttributeName
-                                                      value:[UIFont fontWithName:kBaseFont size:11.0]
+                                                      value:[UIFont fontWithName:kBaseFont size:12.0]
                                                       range:[title rangeOfString:rankStr]];
                                         
                                         [value addAttribute:NSForegroundColorAttributeName value:[UIColor lightGrayColor] range:[title rangeOfString:rankStr]];

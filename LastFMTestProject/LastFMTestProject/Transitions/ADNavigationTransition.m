@@ -14,23 +14,12 @@
 @property (assign, nonatomic) CGFloat zoomScale;
 @property (assign, atomic) NSTimeInterval duration;
 @property (assign, nonatomic) UIViewAnimationCurve animationCurve;
-@property (nonatomic, weak) UIView *startView;
-@property (nonatomic, assign) CGRect destinationRect;
 
 
 @end
 
 
 @implementation ADNavigationTransition
-
-- (instancetype) initWithStartView:(UIView *) view destinationFrame:(CGRect) destinationFrame {
-    self = [super init];
-    if (!self) return nil;
-    
-    [self configureWithStartView:view destinationFrame:destinationFrame];
-    
-    return self;
-}
 
 
 - (instancetype)init
@@ -42,11 +31,6 @@
     }
     
     return self;
-}
-
-- (void) configureWithStartView:(UIView *) view destinationFrame:(CGRect) destinationFrame {
-    self.startView = view;
-    self.destinationRect = destinationFrame;
 }
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
@@ -93,7 +77,7 @@
                                               }
                                               completion:^(BOOL finished) {
                                                   [snapShot removeFromSuperview];
-                                                  [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+                                                  [transitionContext completeTransition:!self.canceled];
                                               }];
                          }];
     } else {
@@ -113,7 +97,7 @@
                                  snapShot.alpha = 0;
                                 [snapShot removeFromSuperview];
                                  toView.hidden = NO;
-                                 [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
+                                  [transitionContext completeTransition:!self.canceled];
                              }];
         }];
     }

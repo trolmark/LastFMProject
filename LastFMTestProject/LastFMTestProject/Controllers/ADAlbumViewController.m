@@ -27,6 +27,7 @@
 @property (nonatomic, strong) ADCollectionViewDataSource *dataSource;
 @property (nonatomic, strong) PCAngularActivityIndicatorView *loadingIndicator;
 @property (nonatomic, strong) ADCoverHeaderView *headerView;
+@property (nonatomic, strong) UIVisualEffectView *blurredView;
 
 @end
 
@@ -58,6 +59,7 @@
     [self setupHeaderView];
     [self setupDataSource];
     [self setupLoadingIndicator];
+    [self setupBlurView];
     [self.dataSource registerReusableViewsWithCollectionView:self.collectionView];
     
     [self fetchData];
@@ -89,6 +91,15 @@
     [self.headerView configureWithData:self.viewModel];
 }
 
+- (void) setupBlurView
+{
+    UIBlurEffect * effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    self.blurredView = [[UIVisualEffectView alloc] initWithEffect:effect];
+    [self.view addSubview:self.blurredView];
+    [self.blurredView alignToView:self.view];
+     [self.view insertSubview:self.blurredView aboveSubview:self.headerView];
+    self.blurredView.hidden = YES;
+}
 
 - (void) setupDataSource
 {
@@ -102,6 +113,13 @@
 
     
     self.collectionView.dataSource = self.dataSource;
+}
+
+#pragma mark ScrollView delegate
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    self.blurredView.hidden  = !(scrollView.contentOffset.y > -scrollView.contentInset.top);
 }
 
 - (void) fetchData
@@ -129,17 +147,12 @@
 #pragma mark ADTransitionProtocol 
 
 - (UIView *) transitionFromViewReverse:(BOOL) reverse {
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:self.headerView.coverImageView.image];
-    imageView.contentMode = self.headerView.contentMode;
-    imageView.clipsToBounds = YES;
-    imageView.userInteractionEnabled = NO;
-    imageView.frame = [self.headerView convertRect:self.headerView.frame toView:self.collectionView.superview];
-    return imageView;
+    return [self.headerView snapshot];
 }
 
 - (CGRect) transitionToViewFrameReverse:(BOOL) reverse
 {
-    return self.headerView.frame;
+    return [self.headerView snapshot].frame;
 }
 
 

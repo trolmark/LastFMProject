@@ -114,7 +114,8 @@
     [self.navigationController pushViewController:detailController animated:YES];
 }
 
-- (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView
+{
     [super scrollViewDidScroll:scrollView];
     self.blurredView.hidden  = !(scrollView.contentOffset.y > -scrollView.contentInset.top);
 }
@@ -124,20 +125,10 @@
 - (UIView *) transitionFromViewReverse:(BOOL) reverse
 {
     if (reverse) {
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:self.headerView.coverImageView.image];
-        imageView.contentMode = self.headerView.contentMode;
-        imageView.clipsToBounds = YES;
-        imageView.userInteractionEnabled = NO;
-        imageView.frame = [self.headerView convertRect:self.headerView.frame toView:self.collectionView.superview];
-        return imageView;
+        return [self.headerView snapshot];
     } else {
         ADAlbumCell *cell = [self selectedCell];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:cell.imageView.image];
-        imageView.contentMode = cell.imageView.contentMode;
-        imageView.clipsToBounds = YES;
-        imageView.userInteractionEnabled = NO;
-        imageView.frame = [cell.imageView convertRect:cell.imageView.frame toView:self.collectionView.superview];
-        return imageView;
+        return [cell snapshot];
     }
 }
 
@@ -152,10 +143,9 @@
 {
     if (reverse) {
         ADAlbumCell *cell = [self selectedCell];
-        CGRect cellFrameInSuperview = [cell.imageView convertRect:cell.imageView.frame toView:self.collectionView.superview];
-        return cellFrameInSuperview;
+        return [cell.snapshot frame];
     } else {
-          return self.headerView.frame;
+        return [self.headerView snapshot].frame;
     }
 }
 

@@ -34,6 +34,8 @@
 		8485334C1B2472F8001E6DA3 /* PCAngularActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485334B1B2472F8001E6DA3 /* PCAngularActivityIndicatorView.m */; };
 		848533591B3201AD001E6DA3 /* ADNavigationTransitionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533581B3201AD001E6DA3 /* ADNavigationTransitionHelper.m */; };
 		8485335C1B32033B001E6DA3 /* ADNavigationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485335B1B32033B001E6DA3 /* ADNavigationTransition.m */; };
+		A7E3FDF21B3415DA005A6746 /* UIImageView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E3FDF11B3415DA005A6746 /* UIImageView+Snapshot.m */; };
+		A7E3FDF51B343D22005A6746 /* UIColor+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E3FDF41B343D22005A6746 /* UIColor+Random.m */; };
 		A7E604CC1B20A3DF000095AB /* ADArtistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604CB1B20A3DF000095AB /* ADArtistCell.m */; };
 		A7E604CF1B20A3F7000095AB /* ADAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604CE1B20A3F7000095AB /* ADAlbumCell.m */; };
 		A7E604D21B20A403000095AB /* ADTrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604D11B20A403000095AB /* ADTrackCell.m */; };
@@ -122,6 +124,10 @@
 		848533601B320904001E6DA3 /* ADTransitionProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTransitionProtocol.h; sourceTree = "<group>"; };
 		93771067284C48A0C0179DE7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		988DA25D5CD9476392BE3886 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7E3FDF01B3415DA005A6746 /* UIImageView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Snapshot.h"; sourceTree = "<group>"; };
+		A7E3FDF11B3415DA005A6746 /* UIImageView+Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Snapshot.m"; sourceTree = "<group>"; };
+		A7E3FDF31B343D22005A6746 /* UIColor+Random.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Random.h"; sourceTree = "<group>"; };
+		A7E3FDF41B343D22005A6746 /* UIColor+Random.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Random.m"; sourceTree = "<group>"; };
 		A7E604CA1B20A3DF000095AB /* ADArtistCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADArtistCell.h; sourceTree = "<group>"; };
 		A7E604CB1B20A3DF000095AB /* ADArtistCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADArtistCell.m; sourceTree = "<group>"; };
 		A7E604CD1B20A3F7000095AB /* ADAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAlbumCell.h; sourceTree = "<group>"; };
@@ -457,6 +463,10 @@
 				A7EAC4D91B1F2B0D004B8A1F /* MTLModel+Dictionary.m */,
 				A7EAC4DA1B1F2B0D004B8A1F /* MTLModel+JSON.h */,
 				A7EAC4DB1B1F2B0D004B8A1F /* MTLModel+JSON.m */,
+				A7E3FDF01B3415DA005A6746 /* UIImageView+Snapshot.h */,
+				A7E3FDF11B3415DA005A6746 /* UIImageView+Snapshot.m */,
+				A7E3FDF31B343D22005A6746 /* UIColor+Random.h */,
+				A7E3FDF41B343D22005A6746 /* UIColor+Random.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -615,6 +625,7 @@
 				A7E88DE91B21C1C500B9C9AD /* ADArtistDetailFlowLayout.m in Sources */,
 				8485335C1B32033B001E6DA3 /* ADNavigationTransition.m in Sources */,
 				A7EAC4D51B1F2009004B8A1F /* ADTrackViewModel.m in Sources */,
+				A7E3FDF51B343D22005A6746 /* UIColor+Random.m in Sources */,
 				A7E604D21B20A403000095AB /* ADTrackCell.m in Sources */,
 				848533461B246EF6001E6DA3 /* ADFeedViewController.m in Sources */,
 				8485334C1B2472F8001E6DA3 /* PCAngularActivityIndicatorView.m in Sources */,
@@ -626,6 +637,7 @@
 				848533271B2249AB001E6DA3 /* ADImageHelper.m in Sources */,
 				A7EAC4DC1B1F2B0D004B8A1F /* MTLModel+Dictionary.m in Sources */,
 				8485332A1B236AA4001E6DA3 /* ADAlbumDetailFlowLayout.m in Sources */,
+				A7E3FDF21B3415DA005A6746 /* UIImageView+Snapshot.m in Sources */,
 				848532E21B1E42F5001E6DA3 /* ADArtistListViewController.m in Sources */,
 				A7E604CF1B20A3F7000095AB /* ADAlbumCell.m in Sources */,
 				A7EAC4CF1B1F1FE6004B8A1F /* ADArtistViewModel.m in Sources */,

@@ -23,7 +23,7 @@
     self = [super initWithFrame:frame];
     if (!self) return nil;
     
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor clearColor];
     [self setupLayout];
     
     return self;
@@ -46,7 +46,6 @@
     [self.durationLabel alignCenterYWithView:self.contentView predicate:@""];
     [self.durationLabel constrainWidth:@"50"];
     self.durationLabel.font = [UIFont fontWithName:kBaseFont size:14];
-    self.durationLabel.textColor = [UIColor lightGrayColor];
 }
 
 - (void) configureWithData:(ADTrackViewModel *) data

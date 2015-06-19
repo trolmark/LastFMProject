@@ -9,6 +9,7 @@
 #import "ADAlbumCell.h"
 #import "ADAlbumViewModel.h"
 #import "Support.h"
+#import "UIImageView+Snapshot.h"
 
 @interface ADAlbumCell()
 @property (nonatomic,strong) UIImageView *imageView;
@@ -74,4 +75,12 @@
         return [UIImage imageWithData:data];
     }] takeUntil:prepareForReuseSignal];
 }
+
+- (UIView *) snapshot
+{
+    UIImageView *imageView = [self.imageView snapshot];
+    imageView.frame = [self.imageView convertRect:self.imageView.frame toView:self.superview.superview];
+    return imageView;
+}
+
 @end

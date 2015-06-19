@@ -10,6 +10,8 @@
 #import "ADViewModels.h"
 #import "ADImageHelper.h"
 #import "Support.h"
+#import "UIImageView+Snapshot.h"
+#import "UIColor+Random.h"
 
 @interface ADCoverHeaderView()
 
@@ -26,8 +28,6 @@
     self = [super initWithFrame:frame];
     if (!self) return nil;
     
-    self.backgroundColor = [UIColor whiteColor];
-    
     self.coverImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     [self addSubview:self.coverImageView];
     [self.coverImageView alignToView:self];
@@ -41,6 +41,8 @@
     self.titleLabel.font = [UIFont fontWithName:kBaseFont size:20];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.textColor = [UIColor whiteColor];
+    self.titleLabel.minimumScaleFactor = 0.7;
+    self.titleLabel.adjustsFontSizeToFitWidth = YES;
     [self insertSubview:self.titleLabel aboveSubview:self.coverImageView];
     
     UIBlurEffect * effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
@@ -49,6 +51,8 @@
     [self addSubview:self.blurredTitleBack];
     [self.blurredTitleBack alignToView:self.titleLabel];
     [self insertSubview:self.blurredTitleBack belowSubview:self.titleLabel];
+    
+    self.backgroundColor = [UIColor randomColor];
     
     return self;
 }
@@ -62,6 +66,14 @@
         }];
     
     RAC(self.titleLabel, text) = RACObserve(data, name);
+}
+
+- (UIView *) snapshot
+{
+    UIImageView *imageView = [self.coverImageView snapshot];
+    // FIXTO: hack
+    imageView.frame = [self.coverImageView convertRect:self.coverImageView.frame toView:self.superview.superview];
+    return imageView;
 }
 
 

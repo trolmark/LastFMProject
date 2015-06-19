@@ -81,10 +81,10 @@
         case UIGestureRecognizerStateEnded: {
             CGPoint velocity = [panGestureRecognizer velocityInView:panGestureRecognizer.view];
             if (velocity.y > 80) {
-               // self.popTransition.canceled = NO;
+                self.popTransition.canceled = NO;
                 [self.interactionController finishInteractiveTransition];
             } else {
-               // self.popTransition.canceled = YES;
+                self.popTransition.canceled = YES;
                 [self.interactionController cancelInteractiveTransition];
             }
             self.interactionController = nil;

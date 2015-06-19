@@ -44,7 +44,7 @@
         return [NSURL URLWithString:value];
     }];
     
-    [[ADImageHelper imageData:[NSURL URLWithString:self.model.imageThumbURL]]
+    [[ADImageHelper imageData:[NSURL URLWithString:self.model.largeImageURL]]
         subscribeNext:^(NSData *x) {
             self.thumbnailData = x;
     }];

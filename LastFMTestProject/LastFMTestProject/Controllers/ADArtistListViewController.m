@@ -149,12 +149,7 @@
 - (UIView *) transitionFromViewReverse:(BOOL) reverse
 {
     ADArtistCell *cell = [self selectedCell];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:cell.imageView.image];
-    imageView.contentMode = cell.imageView.contentMode;
-    imageView.clipsToBounds = YES;
-    imageView.userInteractionEnabled = NO;
-    imageView.frame = [cell.imageView convertRect:cell.imageView.frame toView:self.view];
-    return imageView;
+    return [cell snapshot];
 }
 
 - (ADArtistCell *) selectedCell
@@ -167,8 +162,7 @@
 - (CGRect) transitionToViewFrameReverse:(BOOL) reverse
 {
     ADArtistCell *cell = [self selectedCell];
-    CGRect cellFrameInSuperview = [cell.imageView convertRect:cell.imageView.frame toView:self.view];
-    return cellFrameInSuperview;
+    return [cell snapshot].frame;
 }
 
 

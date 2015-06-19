@@ -12,10 +12,7 @@
 @interface ADNavigationTransition : NSObject<UIViewControllerAnimatedTransitioning>
 
 @property (nonatomic, assign) BOOL reverse;
-
-- (instancetype) initWithStartView:(UIView *) view destinationFrame:(CGRect) destinationFrame;
-
-- (void) configureWithStartView:(UIView *) view destinationFrame:(CGRect) destinationFrame;
+@property (nonatomic, assign) BOOL canceled;
 
 
 

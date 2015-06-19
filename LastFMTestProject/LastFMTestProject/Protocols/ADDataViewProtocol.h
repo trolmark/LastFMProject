@@ -5,5 +5,6 @@
 
 @optional
 - (void) configureWithData:(id) data;
+- (UIView *) snapshot;
 
 @end

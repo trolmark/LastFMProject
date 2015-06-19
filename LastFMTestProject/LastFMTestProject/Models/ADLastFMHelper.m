@@ -26,9 +26,9 @@ void ADSetImageURLsForThumbAndImage(NSArray *imageArray, NSString **imageThumbUR
   currentImageURL = [newAlbumDict objectForKey:@"extralarge"];
   if (currentImageURL != nil)
     largestImageURL = currentImageURL;
-  currentImageURL = [newAlbumDict objectForKey:@"mega"];
+  /*currentImageURL = [newAlbumDict objectForKey:@"mega"];
   if (currentImageURL != nil)
-    largestImageURL = currentImageURL;
+    largestImageURL = currentImageURL;*/
   *imageURL = largestImageURL; // set imageURL with mega image (or extralarge or large etc.)
 }
 
