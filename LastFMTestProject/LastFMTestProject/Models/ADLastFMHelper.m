@@ -18,7 +18,7 @@ void ADSetImageURLsForThumbAndImage(NSArray *imageArray, NSString **imageThumbUR
   largestImageURL = [newAlbumDict objectForKey:@"small"];
   currentImageURL = [newAlbumDict objectForKey:@"medium"];
   if (currentImageURL != nil)
-    largestImageURL = currentImageURL;
+     largestImageURL = currentImageURL;
   currentImageURL = [newAlbumDict objectForKey:@"large"];
   if (currentImageURL != nil)
     largestImageURL = currentImageURL;

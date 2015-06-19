@@ -33,9 +33,7 @@
 {
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.imageView];
-    [self.imageView alignCenterXWithView:self.contentView predicate:nil];
-    [self.imageView alignTopEdgeWithView:self.contentView predicate:nil];
-    [self.imageView constrainWidth:@"300" height:@"300"];
+    [self.imageView alignToView:self.contentView];
     self.imageView.contentMode = UIViewContentModeScaleToFill;
     self.imageView.layer.borderWidth = 0.5f;
     self.imageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -43,7 +41,7 @@
     
     self.artistLabel = [[UILabel alloc] initWithFrame:CGRectZero];
      [self.contentView addSubview:self.artistLabel];
-    [self.artistLabel alignTopEdgeWithView:self.imageView predicate:@"140"];
+    [self.artistLabel alignCenterWithView:self.imageView];
     [self.artistLabel constrainWidthToView:self.contentView predicate:@""];
     self.artistLabel.font = [UIFont fontWithName:kBaseFont size:18];
     self.artistLabel.textAlignment = NSTextAlignmentCenter;
