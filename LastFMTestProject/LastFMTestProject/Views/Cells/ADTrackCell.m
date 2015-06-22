@@ -36,7 +36,7 @@
     self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.titleLabel.numberOfLines = 0;
     [self.titleLabel constrainHeightToView:self.contentView predicate:nil];
-     [self.titleLabel constrainWidthToView:self.contentView predicate:@"*.6"];
+    [self.titleLabel constrainWidthToView:self.contentView predicate:@"*.6"];
     [self.titleLabel alignTop:@"" leading:@"10" toView:self.contentView];
     self.titleLabel.font = [UIFont fontWithName:kBaseFont size:13];
     self.titleLabel.textColor = [UIColor darkGrayColor];
@@ -46,7 +46,7 @@
     [self.durationLabel alignTrailingEdgeWithView:self.contentView predicate:nil];
     [self.durationLabel alignCenterYWithView:self.contentView predicate:@""];
     [self.durationLabel constrainWidth:@"50"];
-    self.durationLabel.font = [UIFont fontWithName:kBaseFont size:14];
+    self.durationLabel.font = [UIFont fontWithName:kBaseFont size:13];
 }
 
 - (void) configureWithData:(ADTrackViewModel *) data

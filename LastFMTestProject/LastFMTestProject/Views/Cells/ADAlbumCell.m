@@ -34,7 +34,8 @@
 {
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.imageView];
-    [self.imageView alignToView:self.contentView];
+    [self.imageView alignTop:@"5" leading:@"10" bottom:@"-5" trailing:@"-10" toView:self.contentView];
+    
     self.imageView.contentMode = UIViewContentModeScaleAspectFill;
     self.imageView.clipsToBounds = YES;
     self.imageView.layer.borderWidth = 0.5f;
@@ -44,7 +45,7 @@
     [self.contentView addSubview:coverView];
     [self.contentView insertSubview:coverView aboveSubview:self.imageView];
     [coverView alignToView:self.imageView];
-    coverView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
+    coverView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.4];
 
     self.albumLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.albumLabel];
@@ -79,7 +80,7 @@
 - (UIView *) snapshot
 {
     UIImageView *imageView = [self.imageView snapshot];
-    imageView.frame = [self.imageView convertRect:self.imageView.frame toView:self.superview.superview];
+    imageView.frame = [self.imageView convertRect:self.imageView.bounds toView:self.superview.superview];
     return imageView;
 }
 

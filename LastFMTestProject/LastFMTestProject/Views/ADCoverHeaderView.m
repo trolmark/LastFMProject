@@ -38,7 +38,7 @@
     [self addSubview:self.titleLabel];
     [self.titleLabel alignBottomEdgeWithView:self predicate:nil];
     [self.titleLabel constrainHeight:@"50"];
-    [self.titleLabel constrainWidthToView:self predicate:@""];
+    [self.titleLabel alignLeading:@"10" trailing:@"-10" toView:self];
     self.titleLabel.font = [UIFont fontWithName:kBaseFont size:20];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.textColor = [UIColor whiteColor];
@@ -50,7 +50,9 @@
     self.blurredTitleBack =
     [[UIVisualEffectView alloc] initWithEffect:effect];
     [self addSubview:self.blurredTitleBack];
-    [self.blurredTitleBack alignToView:self.titleLabel];
+    [self.blurredTitleBack alignBottomEdgeWithView:self predicate:nil];
+    [self.blurredTitleBack alignTopEdgeWithView:self.titleLabel predicate:nil];
+    [self.blurredTitleBack constrainWidthToView:self predicate:nil];
     [self insertSubview:self.blurredTitleBack belowSubview:self.titleLabel];
     
     self.backgroundColor = [UIColor randomColor];

@@ -41,7 +41,6 @@
     self.imageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.imageView.clipsToBounds = YES;
 
-    
     self.artistLabel = [[UILabel alloc] initWithFrame:CGRectZero];
      [self.contentView addSubview:self.artistLabel];
     [self.artistLabel alignBottomEdgeWithView:self.contentView predicate:@"-25"];
