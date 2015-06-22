@@ -52,7 +52,7 @@
     self.albumLabel.textColor = [UIColor whiteColor];
     self.albumLabel.textAlignment = NSTextAlignmentCenter;
     [self.albumLabel alignCenterWithView:self.contentView];
-    [self.albumLabel constrainWidthToView:self.contentView predicate:@""];
+    [self.albumLabel alignLeading:@"15" trailing:@"-15" toView:self];
     self.albumLabel.font = [UIFont fontWithName:kBaseFont size:15];
     
     self.playCountLabel = [[UILabel alloc] initWithFrame:CGRectZero];
