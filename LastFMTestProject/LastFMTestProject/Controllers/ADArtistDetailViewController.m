@@ -53,7 +53,7 @@
     self.collectionView.backgroundColor = [UIColor clearColor];
     
     [self setupHeaderView];
-    [self setupBlurView];
+    //[self setupBlurView];
     [self setupDataSource];
     [self setupTimeline];
     [self.dataSource registerReusableViewsWithCollectionView:self.collectionView];
@@ -78,11 +78,13 @@
 
 - (void) setupBlurView
 {
-    UIBlurEffect * effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIBlurEffect * effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
     self.blurredView =
     [[UIVisualEffectView alloc] initWithEffect:effect];
     [self.view addSubview:self.blurredView];
-    [self.blurredView alignToView:self.view];
+//    [self.blurredView alignToView:self.view];
+    [self.blurredView constrainWidthToView:self.view predicate:@""];
+    [self.blurredView constrainHeightToView:self.view predicate:@""];
     [self.view insertSubview:self.blurredView aboveSubview:self.headerView];
     self.blurredView.hidden = YES;
 }
@@ -114,11 +116,16 @@
     [self.navigationController pushViewController:detailController animated:YES];
 }
 
-- (void) scrollViewDidScroll:(UIScrollView *)scrollView
+/*- (void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [super scrollViewDidScroll:scrollView];
-    self.blurredView.hidden  = !(scrollView.contentOffset.y > -scrollView.contentInset.top);
-}
+   /* [super scrollViewDidScroll:scrollView];
+    NSLog(@"Content offset = %@",NSStringFromCGPoint(scrollView.contentOffset));
+    if (scrollView.contentOffset.y < 0) {
+        [self.blurredView setFrameOrigin:CGPointMake(0.0,fabs(scrollView.contentOffset.y))];
+    }
+    NSLog(@"Blur view = %@",self.blurredView);
+    //self.blurredView.hidden  = !(scrollView.contentOffset.y - 80 > -scrollView.contentInset.top);
+}*/
 
 #pragma mark ADTransitionProtocol
 

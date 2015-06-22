@@ -39,6 +39,7 @@
      [self.titleLabel constrainWidthToView:self.contentView predicate:@"*.6"];
     [self.titleLabel alignTop:@"" leading:@"10" toView:self.contentView];
     self.titleLabel.font = [UIFont fontWithName:kBaseFont size:13];
+    self.titleLabel.textColor = [UIColor darkGrayColor];
     
     self.durationLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.durationLabel];

@@ -93,7 +93,7 @@
 
 - (void) setupBlurView
 {
-    UIBlurEffect * effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIBlurEffect * effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
     self.blurredView = [[UIVisualEffectView alloc] initWithEffect:effect];
     [self.view addSubview:self.blurredView];
     [self.blurredView alignToView:self.view];
