@@ -31,7 +31,8 @@
     self.coverImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     [self addSubview:self.coverImageView];
     [self.coverImageView alignToView:self];
-    self.coverImageView.contentMode = UIViewContentModeScaleToFill;
+    self.coverImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.coverImageView.clipsToBounds = YES;
     
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [self addSubview:self.titleLabel];

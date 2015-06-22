@@ -36,7 +36,7 @@
     self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     [self.contentView addSubview:self.imageView];
     [self.imageView alignToView:self.contentView];
-    self.imageView.contentMode = UIViewContentModeScaleToFill;
+    self.imageView.contentMode = UIViewContentModeScaleAspectFill;
     self.imageView.layer.borderWidth = 0.5f;
     self.imageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.imageView.clipsToBounds = YES;

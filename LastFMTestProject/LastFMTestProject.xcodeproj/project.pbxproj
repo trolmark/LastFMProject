@@ -34,7 +34,6 @@
 		8485334C1B2472F8001E6DA3 /* PCAngularActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485334B1B2472F8001E6DA3 /* PCAngularActivityIndicatorView.m */; };
 		848533591B3201AD001E6DA3 /* ADNavigationTransitionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533581B3201AD001E6DA3 /* ADNavigationTransitionHelper.m */; };
 		8485335C1B32033B001E6DA3 /* ADNavigationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8485335B1B32033B001E6DA3 /* ADNavigationTransition.m */; };
-		848533631B3472C9001E6DA3 /* UIView+CKFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 848533621B3472C9001E6DA3 /* UIView+CKFrame.m */; };
 		A7E3FDF21B3415DA005A6746 /* UIImageView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E3FDF11B3415DA005A6746 /* UIImageView+Snapshot.m */; };
 		A7E3FDF51B343D22005A6746 /* UIColor+Random.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E3FDF41B343D22005A6746 /* UIColor+Random.m */; };
 		A7E604CC1B20A3DF000095AB /* ADArtistCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A7E604CB1B20A3DF000095AB /* ADArtistCell.m */; };
@@ -123,8 +122,6 @@
 		8485335A1B32033B001E6DA3 /* ADNavigationTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADNavigationTransition.h; sourceTree = "<group>"; };
 		8485335B1B32033B001E6DA3 /* ADNavigationTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADNavigationTransition.m; sourceTree = "<group>"; };
 		848533601B320904001E6DA3 /* ADTransitionProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTransitionProtocol.h; sourceTree = "<group>"; };
-		848533611B3472C9001E6DA3 /* UIView+CKFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CKFrame.h"; sourceTree = "<group>"; };
-		848533621B3472C9001E6DA3 /* UIView+CKFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CKFrame.m"; sourceTree = "<group>"; };
 		93771067284C48A0C0179DE7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		988DA25D5CD9476392BE3886 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E3FDF01B3415DA005A6746 /* UIImageView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Snapshot.h"; sourceTree = "<group>"; };
@@ -462,8 +459,6 @@
 		A7EAC4D71B1F2AE4004B8A1F /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				848533611B3472C9001E6DA3 /* UIView+CKFrame.h */,
-				848533621B3472C9001E6DA3 /* UIView+CKFrame.m */,
 				A7EAC4D81B1F2B0D004B8A1F /* MTLModel+Dictionary.h */,
 				A7EAC4D91B1F2B0D004B8A1F /* MTLModel+Dictionary.m */,
 				A7EAC4DA1B1F2B0D004B8A1F /* MTLModel+JSON.h */,
@@ -651,7 +646,6 @@
 				A7EAC4E21B1F4081004B8A1F /* ADFeedSubclasses.m in Sources */,
 				848533151B1E4C07001E6DA3 /* Constants.m in Sources */,
 				A7E88DE31B21BC0C00B9C9AD /* ADLastFMHelper.m in Sources */,
-				848533631B3472C9001E6DA3 /* UIView+CKFrame.m in Sources */,
 				848533431B246CEF001E6DA3 /* ADNavMenuItem.m in Sources */,
 				848532DF1B1E42F5001E6DA3 /* AppDelegate.m in Sources */,
 				A7EAC4C91B1F0784004B8A1F /* ADTimeline.m in Sources */,
